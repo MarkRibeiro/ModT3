@@ -1,0 +1,1 @@
+TRAB2-4.exe /sDAD.script /lDAD.log

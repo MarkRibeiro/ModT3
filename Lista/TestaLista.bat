@@ -1,0 +1,1 @@
+TRAB2-5.exe /sTestaLista.script /lTestaLista.log

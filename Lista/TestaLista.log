@@ -1,0 +1,24 @@
+
+!!! Inicio dos testes
+!!!      Construto sob teste: TRAB2-5.exe
+!!!      Script de teste:     TestaLista.script
+
+!!!    0  Linha:     1  // Script:    TestaLista.script 
+!!!    0  Linha:     2  // Autor:     Caio Melo, Mark Ribeiro, Lucca Almeida 
+!!!    0  Linha:     3  // Data:      28/03/2019 
+!!!    0  Linha:     4  // Propósito: Testar as funcoes da lista. 
+    6  ==cria lista
+    9  ==insere valor 1 na lista
+   12  ==teste valor 2 na lista
+   15  ==pega num de elementos da lista
+   18  ==destroi lista
+
+!!! Número de linhas lidas:          19
+!!! Número de casos de teste:         5
+!!! Número comandos corretos:         5
+!!! Número de falhas encontradas:     0
+
+!!! Não foram encontrados problemas
+
+
+!!! Numero de espacos ainda alocados: 0

@@ -1,0 +1,46 @@
+// Script:    TestaTabuleiro.script
+// Autor:     Caio Melo, Mark Ribeiro, Lucca Almeida
+// Data:      28/03/2019
+// Propósito: Testar as funcoes do tabuleiro.
+
+==cria tabuleiro
+=criar 0
+
+==arruma tabuleiro
+=arrumar 0
+
+==printa tabuleiro
+=imprimir 0
+
+==insere peca branca na casa 1
+=inserir 1 1 'b' 0
+
+==teste cond ret 'casa nao existe'
+=inserir 1 28 'b' 3
+
+==printa tabuleiro
+=imprimir 0
+
+==teste cond ret 'movimento invalido'
+=mover 1 17 'p' 5
+
+==teste cond ret 'casa vazia'
+=mover 2 17 'b' 4
+
+==mover peca branca da casa 1 para a casa 17
+=mover 1 17 'b' 0
+
+==printa tabuleiro
+=imprimir 0
+
+==remover peca branca da casa 17
+=remover 17 0
+
+==printa tabuleiro
+=imprimir 0
+
+==destruir tabuleiro
+=destruir
+
+==teste cond ret 'tabuleiro nao existe'
+=imprimir 2

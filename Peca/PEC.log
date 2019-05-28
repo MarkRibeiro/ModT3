@@ -1,0 +1,20 @@
+
+!!! Inicio dos testes
+!!!      Construto sob teste: TRAB2-2.exe
+!!!      Script de teste:     PEC.script
+
+    1  ==testa criapeca com sucesso
+    4  ==testa obterpeca com sucesso
+    7  ==testa obterpeca com peça não existente
+   10  ==testa obterpeca com peça já existente
+   14  ==testa destruirpeca com peça existente
+
+!!! Número de linhas lidas:          15
+!!! Número de casos de teste:         5
+!!! Número comandos corretos:         6
+!!! Número de falhas encontradas:     0
+
+!!! Não foram encontrados problemas
+
+
+!!! Numero de espacos ainda alocados: 0

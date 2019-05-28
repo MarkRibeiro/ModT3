@@ -1,0 +1,1 @@
+TRAB2-1.exe /sTestaTabuleiro.script /lTestaTabuleiro.log

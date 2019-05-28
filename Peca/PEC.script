@@ -1,0 +1,15 @@
+==testa criapeca com sucesso
+=criarpeca 0 'b' 0
+
+==testa obterpeca com sucesso
+=obterpeca 0 'b' 0
+
+==testa obterpeca com peça não existente
+=obterpeca 1 'p' 1
+
+==testa obterpeca com peça já existente
+=criarpeca 1 'm' 0
+=obterpeca 1 'm' 3
+
+==testa destruirpeca com peça existente
+=destruirpeca 0 0

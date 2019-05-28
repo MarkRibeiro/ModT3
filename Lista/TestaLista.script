@@ -1,0 +1,19 @@
+// Script:    TestaLista.script
+// Autor:     Caio Melo, Mark Ribeiro, Lucca Almeida
+// Data:      28/03/2019
+// Propósito: Testar as funcoes da lista.
+
+==cria lista
+=criar 0
+
+==insere valor 1 na lista
+=inserir 1 0
+
+==teste valor 2 na lista
+=inserir 2 0
+
+==pega num de elementos da lista
+=num 0
+
+==destroi lista
+=destruir 0

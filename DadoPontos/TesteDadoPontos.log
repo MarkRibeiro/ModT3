@@ -1,0 +1,24 @@
+
+!!! Inicio dos testes
+!!!      Construto sob teste: TRAB2-3.exe
+!!!      Script de teste:     TesteDadoPontos.script
+
+    1  == Verifica todas funcoes sem criar dado pontos
+    9  == Cria DadoPontos e id de jogador errado Ã© passado
+   13  == Cria DadoPontos e jogador 1 tenta dobrar 2 vezes seguidas
+   18  == Cria DadoPontos e dobra e dado ate atingir valor maximo 64
+   28  == Tenta ler pontuacao de jogador invalido
+   32  == Tenta modificar pontuacao de jogador invalido
+   36  == Modifica pontuacao do jogador 1 para 50 e depois le
+   41  == Dobra pontuacao ate 32 e depois le valor do DadoPontos
+   51  == Dobra pontuacao ate 32 e depois le ultimo jogador a dobrar
+
+!!! Número de linhas lidas:          59
+!!! Número de casos de teste:         9
+!!! Número comandos corretos:        41
+!!! Número de falhas encontradas:     0
+
+!!! Não foram encontrados problemas
+
+
+!!! Numero de espacos ainda alocados: 0

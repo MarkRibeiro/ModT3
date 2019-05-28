@@ -1,0 +1,81 @@
+﻿// Autores:     Caio Melo, Mark Ribeiro, Lucca Almeida
+// Data:      12/05/2019
+
+# Trabalho 1
+
+O objetivo deste segundo trabalho é de implementar os módulos Tabuleiro, Peça, DadosPontos e
+Dado e também gerar a Especificação de Requisitos e o modelo estrutural da aplicação. Cada módulo 
+foi testado separadamente utilizando o Arcabouço de Testes Automatizados. Cada módulo se encontra dentro
+de sua respectiva pasta que contem: seu código fonte (implementação e definição), seu código fonte de 
+teste, um executavel, script de teste e um arquivo .bat para executar o teste.
+
+## Execução
+
+Método 1:
+	i) Navegar pelo prompt de comando(CMD) até a pasta descompactada do .zip
+	ii) Navegar dentro da pasta do módulo que deseja testar
+	iii) Executar o seguinte comando:
+	
+		<Nome do executavel>.exe /s<Nome do script> /l<Nome arquivo log>
+
+Método 2:
+	i) Descompactar o .zip
+	ii) Navegar pelo Windows Explorer até a pasta do módulo que deseja testar
+	iii) Executar o .bat e abrir o .log gerado para verificar o output
+
+## Exemplo de execução
+
+TRAB2-3.exe /sTesteDadoPontos.script /lTesteDadoPontos.log
+	
+  Output:
+
+		LES - Laboratório de Engenharia de Software DI/PUC-Rio
+			  Arcabouço de teste de módulos C  (c) 2006
+
+		---------------------------------------------
+			  Construto sob teste: TRAB2-3.exe
+
+			  Arquivo de teste:    TesteDadoPontos.script
+		ID do jogador invalido! Deve ser 1 ou 2
+		Este jogador não pode dobrar a pontuacao!
+		Valor maximo do dado atingido!
+		ID do jogador invalido! Deve ser 1 ou 2
+		ID do jogador invalido! Deve ser 1 ou 2
+
+
+		!!! Número de linhas lidas:          59
+		!!! Número de casos de teste:         9
+		!!! Número comandos corretos:        41
+		!!! Número de falhas encontradas:     0
+
+		!!! Não foram encontrados problemas
+
+  Arquivo log gerado:
+		
+		
+		!!! Inicio dos testes
+		!!!      Construto sob teste: TRAB2-3.exe
+		!!!      Script de teste:     TesteDadoPontos.script
+
+			1  == Verifica todas funcoes sem criar dado pontos
+			9  == Cria DadoPontos e id de jogador errado Ã© passado
+		   13  == Cria DadoPontos e jogador 1 tenta dobrar 2 vezes seguidas
+		   18  == Cria DadoPontos e dobra e dado ate atingir valor maximo 64
+		   28  == Tenta ler pontuacao de jogador invalido
+		   32  == Tenta modificar pontuacao de jogador invalido
+		   36  == Modifica pontuacao do jogador 1 para 50 e depois le
+		   41  == Dobra pontuacao ate 32 e depois le valor do DadoPontos
+		   51  == Dobra pontuacao ate 32 e depois le ultimo jogador a dobrar
+
+		!!! Número de linhas lidas:          59
+		!!! Número de casos de teste:         9
+		!!! Número comandos corretos:        41
+		!!! Número de falhas encontradas:     0
+
+		!!! Não foram encontrados problemas
+
+
+		!!! Numero de espacos ainda alocados: 0
+
+
+
