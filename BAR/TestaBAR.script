@@ -1,0 +1,52 @@
+// Script:    TestaBAR.script
+// Autor:     Caio Melo, Mark Ribeiro, Lucca Almeida
+// Data:      02/06/2019
+// Propósito: Testar as funcoes do BAR.
+
+==cria BAR
+=criar 0
+
+==pega o num de pecas brancas no BAR
+=num 'b' 0
+
+==pega o num de pecas brancas no BAR
+=num 'p' 0
+
+==teste da condicao de retorno bar vazio
+=remover 'b' 2
+
+==insere peca branca no BAR
+=inserir 'b' 0
+
+==insere peca branca no BAR
+=inserir 'b' 0
+
+==insere peca branca no BAR
+=inserir 'b' 0
+
+==insere peca preta no BAR
+=inserir 'p' 0
+
+==insere peca preta no BAR
+=inserir 'p' 0
+
+==pega o num de pecas brancas no BAR
+=num 'b' 0
+
+==pega o num de pecas pretas no BAR
+=num 'p' 0
+
+==remove peca branca do BAR
+=remover 'b' 0
+
+==remove peca preta do BAR
+=remover 'p' 0
+
+==pega o num de pecas brancas no BAR
+=num 'b' 0
+
+==pega o num de pecas pretas no BAR
+=num 'p' 0
+
+==destroi BAR
+=destruir 0
