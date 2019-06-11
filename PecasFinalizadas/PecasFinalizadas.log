@@ -1,0 +1,44 @@
+
+
+LES - Laboratório de Engenharia de Software DI/PUC-Rio
+      Arcabouço de teste de módulos C  (c) 2006
+
+---------------------------------------------
+      Construto sob teste: PecasFinalizadas
+
+      Arquivo de teste:    PecasFinalizadas.script
+
+
+!!!    0  Linha:     1  // Script:    TestaPFN.script 
+!!!    0  Linha:     2  // Autor:     Caio Melo, Mark Ribeiro, Lucca Almeida 
+!!!    0  Linha:     3  // Data:      11/06/2019 
+!!!    0  Linha:     4  // Propósito: Testar as funcoes do PFN. 
+    6  ==cria PFN
+    9  ==pega o num de pecas brancas no PFNNumero de pecas da cor b no PFN: 0
+
+   12  ==pega o num de pecas brancas no PFNNumero de pecas da cor p no PFN: 0
+
+   15  ==insere peca branca no PFN
+   18  ==insere peca branca no PFN
+   21  ==insere peca branca no PFN
+   24  ==insere peca preta no PFN
+   27  ==insere peca preta no PFN
+   30  ==pega o num de pecas brancas no PFNNumero de pecas da cor b no PFN: 3
+
+   33  ==pega o num de pecas pretas no PFNNumero de pecas da cor p no PFN: 2
+
+   36  ==pega o num de pecas brancas no PFNNumero de pecas da cor b no PFN: 3
+
+   39  ==pega o num de pecas pretas no PFNNumero de pecas da cor p no PFN: 2
+
+   42  ==destroi PFN
+
+!!! Número de linhas lidas:          43
+!!! Número de casos de teste:        13
+!!! Número comandos corretos:        13
+!!! Número de falhas encontradas:     0
+
+!!! Não foram encontrados problemas
+
+
+!!! Numero de espacos ainda alocados: 0

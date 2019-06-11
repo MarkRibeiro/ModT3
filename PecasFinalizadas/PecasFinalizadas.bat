@@ -1,0 +1,1 @@
+PecasFinalizadas /sPecasFinalizadas.script > PecasFinalizadas.log

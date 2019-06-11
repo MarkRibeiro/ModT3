@@ -1,0 +1,43 @@
+// Script:    TestaPFN.script
+// Autor:     Caio Melo, Mark Ribeiro, Lucca Almeida
+// Data:      11/06/2019
+// Propósito: Testar as funcoes do PFN.
+
+==cria PFN
+=criar 0
+
+==pega o num de pecas brancas no PFN
+=num 'b' 0
+
+==pega o num de pecas brancas no PFN
+=num 'p' 0
+
+==insere peca branca no PFN
+=inserir 'b' 0
+
+==insere peca branca no PFN
+=inserir 'b' 0
+
+==insere peca branca no PFN
+=inserir 'b' 0
+
+==insere peca preta no PFN
+=inserir 'p' 0
+
+==insere peca preta no PFN
+=inserir 'p' 0
+
+==pega o num de pecas brancas no PFN
+=num 'b' 0
+
+==pega o num de pecas pretas no PFN
+=num 'p' 0
+
+==pega o num de pecas brancas no PFN
+=num 'b' 0
+
+==pega o num de pecas pretas no PFN
+=num 'p' 0
+
+==destroi PFN
+=destruir 0
