@@ -22,7 +22,7 @@
 #include <string.h>
 #include <malloc.h>
 
-#include "../ModT3/Peca/PECA.H"
+#include "PECA.H"
 #include "LISTA.H"
 #include "PecasFinalizadas.h"
 
@@ -151,3 +151,18 @@ typedef struct tgPFN
 	   return PFN_CondRetOK;
 
    } /* Fim função: TAB  &NPecas BAR */
+
+   /***************************************************************************
+*
+*  Função: TAB  &Destruir BAR
+*  ****/
+
+   void PFN_DestruirPFN( void )
+   {
+
+	   LIS_DestruirLista( b->bar ) ;
+	   b->bar=NULL;
+       free( b) ;
+	   b=NULL;
+
+   } /* Fim função: TAB  &Destruir BAR */

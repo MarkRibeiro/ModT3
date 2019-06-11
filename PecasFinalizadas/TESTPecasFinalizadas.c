@@ -1,8 +1,8 @@
 /***************************************************************************
-*  $MCI Módulo de implementação: Módulo de teste do BAR
+*  $MCI Módulo de implementação: Módulo de teste do PFN
 *
-*  Arquivo gerado:              TESTBAR.C
-*  Letras identificadoras:      TESTBAR
+*  Arquivo gerado:              TESTPFN.C
+*  Letras identificadoras:      TESTPFN
 *
 *  Projeto: Trabaolho 2 Modular
 *  Autores: cgm - Caio Graça Melo
@@ -15,41 +15,42 @@
 *
 *  $ED Descrição do módulo
 *     Este módulo contém as funções específicas para o teste do
-*     módulo BAR. Ilustra como redigir um interpretador de comandos
+*     módulo PFN. Ilustra como redigir um interpretador de comandos
 *     de teste específicos utilizando o arcabouço de teste para C.
 *
 *  $EIU Interface com o usuário pessoa
 *     Comandos de teste específicos para testar o módulo tabuleiro:
 *
 *     "=criar"        
-*		- chama função BAR_CriarBAR( )
+*		- chama função PFN_CriarPFN( )
 *
 *     "=destruir"   
-*		- chama função BAR_DestruirBAR( )
+*		- chama função PFN_DestruirPFN( )
 *
 *	  "=inserir <Int> <Int>"
-*       - chama função BAR_Inserir( <Peca> )
+*       - chama função PFN_Inserir( <Peca> )
 *
 *     "=remover <int>"
-*       - chama função BAR_Excluir( <char> )
+*       - chama função PFN_Excluir( <char> )
 *
 *	  "=num"		
-*		- chama função BAR_NPecas( <char>, <Int>)
+*		- chama função PFN_NPecas( <char>, <Int>)
 *
 ***************************************************************************/
 
 #include    <string.h>
 #include    <stdio.h>
-#include    "generico.h"
-#include    "lerparm.h"
-#include "LISTA.H"
-#include "TABULEIRO.H"
-#include "PECA.H"
-#include "BAR.h"
+#include    "GENERICO.h"
+#include    "LERPARM.h"
+#include	"LISTA.H"
+#include	"TABULEIRO.h"
+#include	"PECA.H"
+#include	"BAR.h"
+#include	"PecasFinalizadas.h"
 
 /* Tabela dos nomes dos comandos de teste específicos */
 
-#define     CRIAR_BAR_CMD       "=criar"
+#define     CRIAR_PFN_CMD       "=criar"
 #define     INSERE_CMD         	"=inserir"
 #define     REMOVE_CMD         	"=remover"
 #define     NPECAS_CMD         	"=num"
@@ -60,11 +61,11 @@
 
 /***********************************************************************
 *
-*  $FC Função: TESTBAR Efetuar operações de teste específicas para tabuleiro
+*  $FC Função: TESTPFN Efetuar operações de teste específicas para tabuleiro
 *
 *  $ED Descrição da função
 *     Efetua os diversos comandos de teste específicos para o módulo
-*     BAR ser testado.
+*     PFN ser testado.
 *
 *  $EP Parâmetros
 *     $P ComandoTeste - String contendo o comando
@@ -77,8 +78,8 @@
 	TST_tpCondRet TST_EfetuarComando( char * ComandoTeste )
 	{
 
-		BAR_tpCondRet CondRetObtido   = BAR_CondRetOK ;
-		BAR_tpCondRet CondRetEsperada = BAR_CondRetVazio ;
+		PFN_tpCondRet CondRetObtido   = PFN_CondRetOK ;
+		PFN_tpCondRet CondRetEsperada = PFN_CondRetVazio ;
 												  /* inicializa para qualquer coisa */
 
 		char ValorDadoCor='b';
@@ -90,9 +91,9 @@
 
 		TST_tpCondRet Ret ;
 
-		/* Testar BAR Criar BAR */
+		/* Testar PFN Criar PFN */
 
-			if ( strcmp( ComandoTeste , CRIAR_BAR_CMD ) == 0 )
+			if ( strcmp( ComandoTeste , CRIAR_PFN_CMD ) == 0 )
 			{
 
 				NumLidos = LER_LerParametros( "i" ,
@@ -102,14 +103,14 @@
 					return TST_CondRetParm ;
 				} /* if */
 
-				CondRetObtido = BAR_CriarBAR( ) ;
+				CondRetObtido = PFN_CriarPFN( ) ;
 
 				return TST_CompararInt( CondRetEsperada , CondRetObtido ,
-												"Retorno errado ao criar o BAR." ) ;
+												"Retorno errado ao criar o PFN." ) ;
 
-			} /* fim ativa: Testar BAR Criar BAR */
+			} /* fim ativa: Testar PFN Criar PFN */
 
-			/* Testar BAR Num BAR */
+			/* Testar PFN Num PFN */
 
 			if ( strcmp( ComandoTeste , NPECAS_CMD ) == 0 )
 			{
@@ -121,16 +122,16 @@
 					return TST_CondRetParm ;
 				} /* if */
 
-				CondRetObtido = BAR_NPecas(ValorDadoCor, &num ) ;
+				CondRetObtido = PFN_NPecas(ValorDadoCor, &num ) ;
 
-				printf("Numero de pecas da cor %c no BAR: %d\n", ValorDadoCor, num);
+				printf("Numero de pecas da cor %c no PFN: %d\n", ValorDadoCor, num);
 
 				return TST_CompararInt( CondRetEsperada , CondRetObtido ,
-												"Retorno errado ao pegar o numero de elementos no BAR." ) ;
+												"Retorno errado ao pegar o numero de elementos no PFN." ) ;
 
 			} /* fim ativa: Testar TAB Criar tabuleiro */
 
-		/* Testar BAR Insere Peça no BAR */
+		/* Testar PFN Insere Peça no PFN */
 
 			else if ( strcmp( ComandoTeste , INSERE_CMD ) == 0 )
 			{
@@ -142,46 +143,27 @@
 					return TST_CondRetParm ;
 				} /* if */
 
-				CondRetObtido = BAR_Inserir( ValorDadoCor) ;
+				CondRetObtido = PFN_Inserir( ValorDadoCor) ;
 
 				return TST_CompararInt( CondRetEsperada , CondRetObtido ,
-												"Retorno errado ao inserir peça no BAR." ) ;
+												"Retorno errado ao inserir peça no PFN." ) ;
 
-			} /* fim ativa: Testar BAR Insere Peça no BAR */
-
-		/* Testar BAR Remover Peça do BAR */
-
-			else if ( strcmp( ComandoTeste , REMOVE_CMD ) == 0 )
-			{
-
-				NumLidos = LER_LerParametros( "ci" ,
-										 &ValorDadoCor , &CondRetEsperada ) ;
-				if ( NumLidos != 2 )
-				{
-					return TST_CondRetParm ;
-				} /* if */
-
-				CondRetObtido = BAR_Excluir( ValorDadoCor ) ;
-
-				return TST_CompararInt( CondRetEsperada , CondRetObtido ,
-												"Retorno errado ao remover peça do BAR." ) ;
-
-			} /* fim ativa: Testar BAR Remover Peça do BAR */
+			} /* fim ativa: Testar PFN Insere Peça no PFN */
 
 
-		/* Testar TAB Destruir BAR */
+		/* Testar TAB Destruir PFN */
 
 			else if ( strcmp( ComandoTeste , DESTROI_CMD ) == 0 )
 			{
 
-				BAR_DestruirBAR( ) ;
+				PFN_DestruirPFN( ) ;
 
 				return TST_CondRetOK ;
 
-			} /* fim ativa: Testar TAB Destruir BAR */
+			} /* fim ativa: Testar TAB Destruir PFN */
 
 		return TST_CondRetNaoConhec ;
 
-	} /* Fim função: TBAR Efetuar operações de teste específicas para BAR */
+	} /* Fim função: TPFN Efetuar operações de teste específicas para PFN */
 
 /********** Fim do módulo de implementação: Módulo de teste específico **********/

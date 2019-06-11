@@ -98,4 +98,17 @@
 
    PFN_tpCondRet PFN_NPecas( char c, int *n ) ;
 
+/*************************************************************************
+*
+*	$FC Função: BAR Destruir BAR
+*
+*  $ED Descrição da função
+*     Remove o BAR existente. Nada ocorre se não houver um BAR
+*	  já criado	
+*	Assertivas de entrada e saida:
+*	Funçao que não recebe parametros e tem valor de retorno void.
+*
+*************************************************************************/
+
+   void PFN_DestruirPFN( void ) ;
  
