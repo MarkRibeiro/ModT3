@@ -1,21 +1,22 @@
 /***************************************************************************
-*
 *  $MCD Módulo de definição: Módulo PFN
 *
-*  Arquivo gerado:              PecasFinalizadas.H
+*  Arquivo gerado:              PecasFinalizadas.C
 *  Letras identificadoras:      PFN
 *
-*  Projeto: Trabalho 2 Modular
+*  Projeto: Trabaolho 2 Modular
 *  Autores: cgm - Caio Graça Melo
-*			mr - Mark Ribeiro
-*			lb - Lucca Buffara
+*           mr - Mark Ribeiro
+*           lb - Lucca Buffara
 *
 *  $HA Histórico de evolução:
-*     Versão   Autores	  Data					Observações
-*	  	 1		cgm			30/05				Criado o módulo
+*     Versão   Autores    Data      Observações
+*        3      cgm       11/06     Criação de scripts de teste do modulo
+*        2      cgm       09/06     Finalização do modulo
+*        1      mr        07/06     Criado o módulo
 *
 *  $ED Descrição do módulo
-*		Módulo que contém as funções que o BAR disponibiliza para 
+*		Módulo que contém as funções, que o PFN disponibiliza, para 
 *		serem usadas pelo jogo. Além disso também são disponibilizadas
 *		as condiçoes de retorno das funções em questão.
 *
@@ -23,7 +24,7 @@
 
 /***********************************************************************
 *
-*  $TC Tipo de dados: TAB Condições de retorno
+*  $TC Tipo de dados: PFN Condições de retorno
 *
 *
 ***********************************************************************/
@@ -44,10 +45,10 @@
 
 /***********************************************************************
 *
-*	$FC Função: BAR Criar BAR
+*	$FC Função: PFN CriarPFN
 *
 *  $ED Descrição da função
-*     Cria uma estrutura que guarda as pecas capturadas de cada jogador.
+*     Cria uma estrutura que guarda as pecas finalizadas de cada jogador.
 *
 *	Assertivas de entrada e saida:
 *	Função não recebe parâmetros.
@@ -63,10 +64,10 @@
 
    /***********************************************************************
 *
-*	$FC Função: BAR Inserir BAR
+*	$FC Função: PFN Inserir
 *
 *  $ED Descrição da função
-*     Insere uma peca na lista de pecas capturadas de um jogador.
+*     Insere uma peca na lista de pecas finalizadas de um jogador.
 *
 *	Assertivas de entrada e saida:
 *	Função não recebe parâmetros.
@@ -81,11 +82,11 @@
 
    /***********************************************************************
 *
-*	$FC Função: BAR NPecas BAR
+*	$FC Função: PFN NPecas
 *
 *  $ED Descrição da função
 *     Pega o numero de pecas existentes na lista que guarda o numero de pecas
-*	  capturadas de um jogador.
+*	  finalizadas de um jogador.
 *
 *	Assertivas de entrada e saida:
 *	Função não recebe parâmetros.
@@ -100,10 +101,10 @@
 
 /*************************************************************************
 *
-*	$FC Função: BAR Destruir BAR
+*	$FC Função: PFN DestruirPFN
 *
 *  $ED Descrição da função
-*     Remove o BAR existente. Nada ocorre se não houver um BAR
+*     Remove o PFN existente. Nada ocorre se não houver um PFN
 *	  já criado	
 *	Assertivas de entrada e saida:
 *	Funçao que não recebe parametros e tem valor de retorno void.

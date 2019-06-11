@@ -1,8 +1,8 @@
 /***************************************************************************
-*  $MCI Módulo de implementação: Módulo Tabuleiro
+*  $MCI Módulo de implementação: Módulo Pecas Finalizadas
 *
-*  Arquivo gerado:              TABULEIRO.C
-*  Letras identificadoras:      TAB
+*  Arquivo gerado:              PecasFinalizadas.C
+*  Letras identificadoras:      PFN
 *
 *  Projeto: Trabaolho 2 Modular
 *  Autores: cgm - Caio Graça Melo
@@ -10,11 +10,10 @@
 *			lb - Lucca Buffara
 *
 *  $HA Histórico de evolução:
-*     Versão   Autores	  Data					Observações
-*		 4		cgm			13/05				Ajustes finais
-*		 3		cgm			11/05				Correção de bugs
-*		 2		cgm			04/05				Revisão de algumas funções criadas
-*	  	 1		cgm			03/05				Criado o módulo
+*     Versão   Autores	  Data		Observações
+*		 3		cgm		  11/06		Criação de scripts de teste do modulo
+*		 2		cgm		  09/06		Finalização do modulo
+*	  	 1		mr		  07/06		Criado o módulo
 *
 ***************************************************************************/
 #include <stdio.h>
@@ -28,68 +27,68 @@
 
 /***********************************************************************
 *
-*  $TC Tipo de dados: Descritor do pecas capturadas 
+*  $TC Tipo de dados: Descritor do pecas Finalizadas 
 *
 *
 *  $ED Descrição do tipo
-*     Struct que representa a 'classe' pecas capturadas.
+*     Struct que representa a 'classe' pecas Finalizadas.
 *
 ***********************************************************************/
 
 typedef struct tgPFN
 {
-		 LIS_tppLista bar ;	/* Ponteiro para a lista de listas de peça */
+		 LIS_tppLista pfn ;	/* Ponteiro para a lista de listas de peça */
 
 } tpPFN;
 
 /*****  Dados encapsulados no módulo  *****/
 
-		static tpPFN * b = NULL ;
-				/* Ponteiro para o BAR */
+		static tpPFN * f = NULL ;
+				/* Ponteiro para o pecasFinalizadas */
 
 /*****  Código das funções exportadas pelo módulo  *****/
 
 /***************************************************************************
 *
-*  Função: TAB  &Criar Tabuleiro
+*  Função: PFN  &CriarPFN
 *  ****/
-	/*Função auxiliar do Criar BAR*/
+	/*Função auxiliar do CriarPFN*/
    void Excluir(void*ponteiro)
    {
 	   free(ponteiro);
    }
-   /*Fim Função auxiliar do Criar BAR*/
+   /*Fim Função auxiliar do CriarPFN*/
 
    PFN_tpCondRet PFN_CriarPFN(
              void   ( * ExcluirValor ) ( void * pDado ) )
    {
 	  int i;
-      b = ( tpPFN*)malloc( sizeof( tpPFN )) ;
-      if ( b == NULL )
+      f = ( tpPFN*)malloc( sizeof( tpPFN )) ;
+      if ( f == NULL )
       {
          return PFN_CondRetFaltouMemoria ;
       } /* if */
 
-	  b->bar=NULL;
-	  b->bar = LIS_CriarLista(Excluir);
-	  if(b->bar==NULL)
+	  f->pfn=NULL;
+	  f->pfn = LIS_CriarLista(Excluir);
+	  if(f->pfn==NULL)
 	  {
 		  return PFN_CondRetFaltouMemoria;
 	  }/*if*/
 
 	  for(i=0;i<2;i++)
 	   {
-		   LIS_InserirElementoApos( b->bar ,
+		   LIS_InserirElementoApos( f->pfn ,
                                           LIS_CriarLista(Excluir));
 	   }/*for*/
 
       return PFN_CondRetOK ;
 
-   } /* Fim função: TAB  &Criar BAR */
+   } /* Fim função: PFN  &CriarPFN */
 
  /***************************************************************************
 *
-*  Função: TAB  &Inserir BAR
+*  Função: PFN  &Inserir
 *  ****/
 
    PFN_tpCondRet PFN_Inserir( char c )
@@ -107,15 +106,15 @@ typedef struct tgPFN
 
 	   if(c=='b')
 	   {
-		   IrInicioLista( b->bar ) ;
+		   IrInicioLista( f->pfn ) ;
 	   }
 	   
 	   else
 	   {
-		   IrFinalLista( b->bar ) ;
+		   IrFinalLista( f->pfn ) ;
 	   }
 
-	   listaCorr=(LIS_tppLista)LIS_ObterValor( b->bar ) ;
+	   listaCorr=(LIS_tppLista)LIS_ObterValor( f->pfn ) ;
 	   auxLis=LIS_InserirElementoApos( listaCorr , p);	
 	   if(auxLis==LIS_CondRetFaltouMemoria)
 	   {
@@ -124,11 +123,11 @@ typedef struct tgPFN
 
 	   return PFN_CondRetOK;
 
-   } /* Fim função: TAB  &Inserir BAR */
+   } /* Fim função: PFN  &Inserir */
 
  /***************************************************************************
 *
-*  Função: TAB  &NPecas BAR
+*  Função:  PFN  &NPecas
 *  ****/
 
    PFN_tpCondRet PFN_NPecas( char c, int *n )
@@ -137,32 +136,32 @@ typedef struct tgPFN
 
 	   if(c=='b')
 	   {
-		   IrInicioLista( b->bar ) ;
+		   IrInicioLista( f->pfn ) ;
 	   }
 	   
 	   else
 	   {
-		   IrFinalLista( b->bar ) ;
+		   IrFinalLista( f->pfn ) ;
 	   }
 
-	   listaCorr=(LIS_tppLista)LIS_ObterValor( b->bar ) ;
+	   listaCorr=(LIS_tppLista)LIS_ObterValor( f->pfn ) ;
 	   pegaNumElementos( listaCorr , n );
 
 	   return PFN_CondRetOK;
 
-   } /* Fim função: TAB  &NPecas BAR */
+   } /* Fim função: PFN  &NPecas */
 
    /***************************************************************************
 *
-*  Função: TAB  &Destruir BAR
+*  Função: PFN  &DestruirPFN
 *  ****/
 
    void PFN_DestruirPFN( void )
    {
 
-	   LIS_DestruirLista( b->bar ) ;
-	   b->bar=NULL;
-       free( b) ;
-	   b=NULL;
+	   LIS_DestruirLista( f->pfn ) ;
+	   f->pfn=NULL;
+       free( f) ;
+	   f=NULL;
 
-   } /* Fim função: TAB  &Destruir BAR */
+   } /* Fim função: PFN  &DestruirPFN */

@@ -1,17 +1,19 @@
 /***************************************************************************
-*  $MCI Módulo de implementação: Módulo de teste do PFN
+*  $MCD Módulo de definição: Módulo PFN
 *
-*  Arquivo gerado:              TESTPFN.C
-*  Letras identificadoras:      TESTPFN
+*  Arquivo gerado:              PecasFinalizadas.C
+*  Letras identificadoras:      PFN
 *
 *  Projeto: Trabaolho 2 Modular
 *  Autores: cgm - Caio Graça Melo
-*			mr - Mark Ribeiro
-*			lb - Lucca Buffara
+*           mr - Mark Ribeiro
+*           lb - Lucca Buffara
 *
 *  $HA Histórico de evolução:
-*    Versão	  Autores		 	 Data			Observações
-*      1		cgm			  	30/05/2019     Modulo de teste criado
+*     Versão   Autores    Data      Observações
+*        3      cgm       11/06     Criação de scripts de teste do modulo
+*        2      cgm       09/06     Finalização do modulo
+*        1      mr        07/06     Criado o módulo
 *
 *  $ED Descrição do módulo
 *     Este módulo contém as funções específicas para o teste do
@@ -19,22 +21,19 @@
 *     de teste específicos utilizando o arcabouço de teste para C.
 *
 *  $EIU Interface com o usuário pessoa
-*     Comandos de teste específicos para testar o módulo tabuleiro:
+*     Comandos de teste específicos para testar o módulo PFN:
 *
 *     "=criar"        
 *		- chama função PFN_CriarPFN( )
 *
-*     "=destruir"   
-*		- chama função PFN_DestruirPFN( )
-*
 *	  "=inserir <Int> <Int>"
 *       - chama função PFN_Inserir( <Peca> )
 *
-*     "=remover <int>"
-*       - chama função PFN_Excluir( <char> )
-*
 *	  "=num"		
 *		- chama função PFN_NPecas( <char>, <Int>)
+*
+*     "=destruir"   
+*		- chama função PFN_DestruirPFN( )
 *
 ***************************************************************************/
 
@@ -52,7 +51,6 @@
 
 #define     CRIAR_PFN_CMD       "=criar"
 #define     INSERE_CMD         	"=inserir"
-#define     REMOVE_CMD         	"=remover"
 #define     NPECAS_CMD         	"=num"
 #define     DESTROI_CMD         "=destruir"
 
@@ -61,7 +59,7 @@
 
 /***********************************************************************
 *
-*  $FC Função: TESTPFN Efetuar operações de teste específicas para tabuleiro
+*  $FC Função: TESTPFN Efetuar operações de teste específicas para PFN
 *
 *  $ED Descrição da função
 *     Efetua os diversos comandos de teste específicos para o módulo
@@ -129,7 +127,7 @@
 				return TST_CompararInt( CondRetEsperada , CondRetObtido ,
 												"Retorno errado ao pegar o numero de elementos no PFN." ) ;
 
-			} /* fim ativa: Testar TAB Criar tabuleiro */
+			} /* fim ativa: Testar PFN Num PFN */
 
 		/* Testar PFN Insere Peça no PFN */
 
@@ -151,7 +149,7 @@
 			} /* fim ativa: Testar PFN Insere Peça no PFN */
 
 
-		/* Testar TAB Destruir PFN */
+		/* Testar PFN Destruir PFN */
 
 			else if ( strcmp( ComandoTeste , DESTROI_CMD ) == 0 )
 			{
@@ -160,7 +158,7 @@
 
 				return TST_CondRetOK ;
 
-			} /* fim ativa: Testar TAB Destruir PFN */
+			} /* fim ativa: Testar PFN Destruir PFN */
 
 		return TST_CondRetNaoConhec ;
 
