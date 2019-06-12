@@ -262,7 +262,14 @@ typedef struct tgTabuleiro
 			   if(num>=j)
 			   {
 				   PEC_ObterCorPeca ((Peca*) LIS_ObterValor( casa ), &cor );
-				   printf(" %c ",cor);
+				   if(j==6 && num>6)
+				   {
+					   printf(" %d ",num);
+				   }/*if*/
+				   else
+				   {
+					   printf(" %c ",cor);
+				   }/*else*/
 			   }/*if*/
 			   else
 			   {
