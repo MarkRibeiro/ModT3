@@ -1,10 +1,14 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
+
 #include "DADO.H"
 #include "PECA.H"
 #include "LISTA.H"
 #include "TABULEIRO.H"
+#include "DadoPontos.h"
+#include "BAR.H"
+#include "PecasFinalizadas.h"
 
 //Limpa a tela
 void clrscr()
@@ -52,9 +56,9 @@ void printBanner(char *c){
         | ___ \ '__/ _` | '_ \ / __/ _` / __|
         | |_/ / | | (_| | | | | (_| (_| \__ \
         \____/|_|  \__,_|_| |_|\___\__,_|___/
-                                            
-                                                                                                        
+        -------------------------------------                                                                                                                            
     )EOF");
+    printf("\n");
 
     }else{
     printf(R"EOF(
@@ -64,10 +68,9 @@ void printBanner(char *c){
         |  __/ '__/ _ \ __/ _` / __|
         | |  | | |  __/ || (_| \__ \
         \_|  |_|  \___|\__\__,_|___/
-                                    
-                                                                                                                
+        ----------------------------                                                                                                                    
     )EOF");
-
+        printf("\n");
     }
 }
 
@@ -75,12 +78,14 @@ void printBanner(char *c){
 void initPartida(void){
     TAB_CriarTabuleiro();
     TAB_ArrumarTabuleiro();
+    DP_criaDadosPontos();
 }
 
 char lanceInicial(void){
 
     int dado1, dado2;
     char c;
+    
 
     while(1){
 
@@ -174,7 +179,6 @@ int main(void){
 
         //Verifica se movimento foi validado pelo modulo tabuleiro
         //E nao permite que movimentos totais seja negativo
-
         if(cor=='p' && (casaIni - casaDest) <= movimentosTotais){
             if(TAB_MoverPeca(casaIni, casaDest, cor) == 0){
                 movimentosTotais = movimentosTotais - (casaIni - casaDest);
