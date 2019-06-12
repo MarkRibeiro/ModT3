@@ -186,10 +186,36 @@ typedef struct tgTabuleiro
 		   return TAB_CondRetTabNaoExiste;
 	   }/*if*/
 
+	   printf("\n");
 	   for(i=0;i<13;i++)
 	   {
-		   printf(" -");
-	   }
+		   if(i<6)
+		   {
+			    if(i<3)
+				{
+					printf(" %d", 12-i);
+				}/*if*/
+				else
+				{
+					printf("  %d", 12-i);
+				}/*else*/
+		   }/*if*/
+		   else if(i>6)
+		   {
+				if(13-i==6)
+				{
+					printf("   ");
+				}/*if*/
+				printf("  %d", 13-i);
+		   }/*else if*/
+	   }/*for*/
+	   printf("\n");
+
+	   for(i=0;i<13;i++)
+	   {
+		   printf(" --");
+	   }/*for*/
+
 	   printf("\n|");
 	   for(j=1;j<=6;j++)
 	   {
@@ -197,28 +223,28 @@ typedef struct tgTabuleiro
 		   {
 			   if(i==6)
 			   {
-				   printf("| ");
-			   }
+				   printf("|| ");
+			   }/*if*/
 
 			   casa=IrCasa(i);
 			   pegaNumElementos(casa, &num);
 			   if(num>=j)
 			   {
 				   PEC_ObterCorPeca ((Peca*) LIS_ObterValor( casa ), &cor );
-				   printf("%c ",cor);
-			   }
+				   printf(" %c ",cor);
+			   }/*if*/
 			   else
 			   {
-				   printf("  ");
-			   }
-		   }
+				   printf("   ");
+			   }/*if*/
+		   }/*for*/
 		   printf("|\n|");
-	   }
+	   }/*for*/
 
 	   for(i=0;i<13;i++)
 	   {
-		   printf("- ");
-	   }
+		   printf("-- ");
+	   }/*for*/
 
 	   printf("|\n|");
 
@@ -228,27 +254,36 @@ typedef struct tgTabuleiro
 		   {
 			   if(i==19)
 			   {
-				   printf("| ");
-			   }
+				   printf("|| ");
+			   }/*if*/
 
 			   casa=IrCasa(i);
 			   pegaNumElementos(casa, &num);
 			   if(num>=j)
 			   {
 				   PEC_ObterCorPeca ((Peca*) LIS_ObterValor( casa ), &cor );
-				   printf("%c ",cor);
-			   }
+				   printf(" %c ",cor);
+			   }/*if*/
 			   else
 			   {
-				   printf("  ");
-			   }
-		   }
+				   printf("   ");
+			   }/*else*/
+		   }/*for*/
 		   printf("|\n|");
-	   }
+	   }/*for*/
+
 	   for(i=0;i<13;i++)
 	   {
-		   printf("- ");
-	   }
+		   printf("-- ");
+	   }/*for*/
+
+	   printf("\n");
+	   for(i=13;i<25;i++)
+	   {
+		   if(i==19)
+			   printf("   ");
+		   printf(" %d", i);
+	   }/*for*/
 
 	   printf("\n\n\n");
 
@@ -291,8 +326,6 @@ typedef struct tgTabuleiro
 		   return TAB_CondRetMovInvalido;
 	   }/*if*/
 
-	   LIS_ExcluirElemento( ini ) ;
-
 	   fim=IrCasa(casaFim);
 	   IrFinalLista(fim) ;
 
@@ -301,6 +334,8 @@ typedef struct tgTabuleiro
 	   {
 		   return TAB_CondRetMovInvalido;
 	   }/*if*/
+
+	   LIS_ExcluirElemento( ini ) ;
 
 	   aux=TAB_InserirPecasCasa( 1, corIni, casaFim );
 	   if(aux==TAB_CondRetFaltouMemoria)
