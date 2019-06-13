@@ -12,6 +12,7 @@
 *
 *  $HA Histórico de evolução:
 *     Versão   Autores	  Data					Observações
+*		 4		cgm			13/06				Add func checa casa
 *		 3		cgm			13/05				Ajustes finais
 *		 2		cgm			11/05				Correção de bugs
 *	  	 1		cgm			03/05				Criado o módulo
@@ -193,5 +194,23 @@
 *************************************************************************/
 
    TAB_tpCondRet TAB_PrintTabuleiro( void ) ;
+
+   /*************************************************************************
+*
+*	$FC Função: TAB Checa Casa
+*
+*  $ED Descrição da função
+*     Checa a presenca de pecas adversarias na casa em questao.
+*
+*	Assertivas de entrada e saida:
+*	Nao existem parametros nessa função
+*
+*	$FV Valores de retorno:
+*		- 0 se nao houverem pecas adversarias na casa
+*		- 1 se houve uma peca adversaria na casa
+*		- 2 se houver mais de uma peca adversaria na casa
+*
+*************************************************************************/
+   int TAB_ChecaCasa (int nCasa, char c)
 
 /********** Fim do módulo de definição: Módulo Tabuleiro **********/

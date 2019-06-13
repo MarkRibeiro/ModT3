@@ -39,6 +39,27 @@
 ==printa tabuleiro
 =imprimir 0
 
+==testa mover peca branca pra casa preta.Erro 5 esperado
+=mover 1 6 'b' 5
+
+==printa tabuleiro
+=imprimir 0
+
+==mover peca branca da casa 17 para a casa 19
+=mover 17 19 'b' 0
+
+==mover peca branca da casa 17 para a casa 19
+=mover 17 19 'b' 0
+
+==printa tabuleiro
+=imprimir 0
+
+==checa casa 17
+=checar 17 'b'
+
+==checa casa 18
+=checar 18 'b'
+
 ==destruir tabuleiro
 =destruir
 
