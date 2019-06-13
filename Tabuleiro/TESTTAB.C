@@ -27,13 +27,16 @@
 *     "=destruir"   
 *		- chama função TAB_DestruirTabuleiro( )
 *
-*	  "=move" <int> <int>
+*	  "=mover" <int> <int>
 *		- chama função TAB_MoverPeca( <int>, <int> )
 *
-*     "=remove <int>"
+*	  "=checar" <int> <char>
+*		- chama a funcao TAB_ChecaCasa(<int> <char>)
+*
+*     "=remover <int>"
 *       - chama função TAB_RemoverPecaCasa( <int> )
 *
-*     "=insere <Int> <Int>"
+*     "=inserir <Int> <Int>"
 *       - chama função TAB_InserirPecaCasa( <Int> , <Int> )
 *
 *     "=imprimir"		
@@ -56,6 +59,7 @@
 #define     INSERE_CMD         	"=inserir"
 #define     REMOVE_CMD         	"=remover"
 #define     MOVE_CMD         	"=mover"
+#define     CHECA_CMD         	"=checar"
 #define     IMPRIMI_CMD         "=imprimir"
 #define     DESTROI_CMD         "=destruir"
 
@@ -215,6 +219,37 @@
 			{
 
 				TAB_DestruirTabuleiro( ) ;
+
+				return TST_CondRetOK ;
+
+			} /* fim ativa: Testar TAB Destruir Tabuleiro */
+
+		/* Testar TAB Checa Casa */
+
+			else if ( strcmp( ComandoTeste , CHECA_CMD ) == 0 )
+			{
+				int num;
+				NumLidos = LER_LerParametros( "ic" ,
+										 &ValorDadoInt, &ValorDadoCor ) ;
+				if ( NumLidos != 2 )
+				{
+					return TST_CondRetParm ;
+				} /* if */
+
+				num=TAB_ChecaCasa(ValorDadoInt, ValorDadoCor);
+
+				if(num==0)
+				{
+					printf("Nenhuma peca adversaria na casa em questao\n");
+				}
+				else if(num==1)
+				{
+					printf("Uma peca adversaria na casa em questao\n");
+				}
+				else
+				{
+					printf("Mais de uma peca adversaria na casa em questao\n");
+				}
 
 				return TST_CondRetOK ;
 
