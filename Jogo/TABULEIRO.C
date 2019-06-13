@@ -1,20 +1,20 @@
 /***************************************************************************
-*  $MCI Mï¿½dulo de implementaï¿½ï¿½o: Mï¿½dulo Tabuleiro
+*  $MCI Módulo de implementação: Módulo Tabuleiro
 *
 *  Arquivo gerado:              TABULEIRO.C
 *  Letras identificadoras:      TAB
 *
 *  Projeto: Trabaolho 2 Modular
-*  Autores: cgm - Caio Graï¿½a Melo
+*  Autores: cgm - Caio Graça Melo
 *			mr - Mark Ribeiro
 *			lb - Lucca Buffara
 *
-*  $HA Histï¿½rico de evoluï¿½ï¿½o:
-*     Versï¿½o   Autores	  Data					Observaï¿½ï¿½es
+*  $HA Histórico de evolução:
+*     Versão   Autores	  Data					Observações
 *		 4		cgm			13/05				Ajustes finais
-*		 3		cgm			11/05				Correï¿½ï¿½o de bugs
-*		 2		cgm			04/05				Revisï¿½o de algumas funï¿½ï¿½es criadas
-*	  	 1		cgm			03/05				Criado o mï¿½dulo
+*		 3		cgm			11/05				Correção de bugs
+*		 2		cgm			04/05				Revisão de algumas funções criadas
+*	  	 1		cgm			03/05				Criado o módulo
 *
 ***************************************************************************/
 
@@ -32,35 +32,35 @@
 *  $TC Tipo de dados: Descritor do tabuleiro
 *
 *
-*  $ED Descriï¿½ï¿½o do tipo
+*  $ED Descrição do tipo
 *     Struct que representa a 'classe' tabuleiro.
 *
 ***********************************************************************/
 
 typedef struct tgTabuleiro
 {
-		 LIS_tppLista tabuleiro ;	/* Ponteiro para a lista de listas de peï¿½a */
+		 LIS_tppLista tabuleiro ;	/* Ponteiro para a lista de listas de peça */
 
 } tpTabuleiro;
 
-/*****  Dados encapsulados no mï¿½dulo  *****/
+/*****  Dados encapsulados no módulo  *****/
 
 		static tpTabuleiro * t = NULL ;
 				/* Ponteiro para o tabuleiro */
 
-/***** Protï¿½tipos das funï¿½ï¿½es encapuladas no mï¿½dulo *****/
+/***** Protótipos das funções encapuladas no módulo *****/
 
 	static LIS_tppLista IrCasa( int nCasa ) ;
 
-/*****  Cï¿½digo das funï¿½ï¿½es exportadas pelo mï¿½dulo  *****/
+/*****  Código das funções exportadas pelo módulo  *****/
 
 /***************************************************************************
 *
-*  Funï¿½ï¿½o: TAB  &Criar Tabuleiro
+*  Função: TAB  &Criar Tabuleiro
 *  ****/
 
    TAB_tpCondRet TAB_CriarTabuleiro(
-            )
+             void   ( * ExcluirValor ) ( void * pDado ) )
    {
       t = ( tpTabuleiro*)malloc( sizeof( tpTabuleiro )) ;
       if ( t == NULL )
@@ -72,11 +72,11 @@ typedef struct tgTabuleiro
 
       return TAB_CondRetOK ;
 
-   } /* Fim funï¿½ï¿½o: TAB  &Criar Tabuleiro */
+   } /* Fim função: TAB  &Criar Tabuleiro */
 
    /***************************************************************************
 *
-*  Funï¿½ï¿½o: TAB  &Destruir tabuleiro
+*  Função: TAB  &Destruir tabuleiro
 *  ****/
 
    void TAB_DestruirTabuleiro( void )
@@ -87,18 +87,18 @@ typedef struct tgTabuleiro
        free( t) ;
 	   t=NULL;
 
-   } /* Fim funï¿½ï¿½o: TAB  &Destruir tabuleiro */
+   } /* Fim função: TAB  &Destruir tabuleiro */
 
       /***************************************************************************
 *
-*  Funï¿½ï¿½o: TAB  &Arruma tabuleiro
+*  Função: TAB  &Arruma tabuleiro
 *  ****/
-   /*Funï¿½ï¿½o auxiliar do Arruma Tabuleiro*/
+   /*Função auxiliar do Arruma Tabuleiro*/
    void Excluir(void*ponteiro)
    {
 	   free(ponteiro);
    }
-   /*Fim Funï¿½ï¿½o auxiliar do Arruma Tabuleiro*/
+   /*Fim Função auxiliar do Arruma Tabuleiro*/
 
    TAB_tpCondRet TAB_ArrumarTabuleiro( void )
    {
@@ -169,11 +169,11 @@ typedef struct tgTabuleiro
 
 	   return TAB_CondRetOK;
    } 
-	/* Fim funï¿½ï¿½o: TAB  &Arruma tabuleiro */
+	/* Fim função: TAB  &Arruma tabuleiro */
 
     /***************************************************************************
 *
-*  Funï¿½ï¿½o: TAB  &Print tabuleiro
+*  Função: TAB  &Print tabuleiro
 *  ****/
 
    TAB_tpCondRet TAB_PrintTabuleiro( void ) 
@@ -186,10 +186,36 @@ typedef struct tgTabuleiro
 		   return TAB_CondRetTabNaoExiste;
 	   }/*if*/
 
+	   printf("\n");
 	   for(i=0;i<13;i++)
 	   {
-		   printf(" -");
-	   }
+		   if(i<6)
+		   {
+			    if(i<3)
+				{
+					printf(" %d", 12-i);
+				}/*if*/
+				else
+				{
+					printf("  %d", 12-i);
+				}/*else*/
+		   }/*if*/
+		   else if(i>6)
+		   {
+				if(13-i==6)
+				{
+					printf("   ");
+				}/*if*/
+				printf("  %d", 13-i);
+		   }/*else if*/
+	   }/*for*/
+	   printf("\n");
+
+	   for(i=0;i<13;i++)
+	   {
+		   printf(" --");
+	   }/*for*/
+
 	   printf("\n|");
 	   for(j=1;j<=6;j++)
 	   {
@@ -197,28 +223,28 @@ typedef struct tgTabuleiro
 		   {
 			   if(i==6)
 			   {
-				   printf("| ");
-			   }
+				   printf("|| ");
+			   }/*if*/
 
 			   casa=IrCasa(i);
 			   pegaNumElementos(casa, &num);
 			   if(num>=j)
 			   {
 				   PEC_ObterCorPeca ((Peca*) LIS_ObterValor( casa ), &cor );
-				   printf("%c ",cor);
-			   }
+				   printf(" %c ",cor);
+			   }/*if*/
 			   else
 			   {
-				   printf("  ");
-			   }
-		   }
+				   printf("   ");
+			   }/*if*/
+		   }/*for*/
 		   printf("|\n|");
-	   }
+	   }/*for*/
 
 	   for(i=0;i<13;i++)
 	   {
-		   printf("- ");
-	   }
+		   printf("-- ");
+	   }/*for*/
 
 	   printf("|\n|");
 
@@ -228,38 +254,54 @@ typedef struct tgTabuleiro
 		   {
 			   if(i==19)
 			   {
-				   printf("| ");
-			   }
+				   printf("|| ");
+			   }/*if*/
 
 			   casa=IrCasa(i);
 			   pegaNumElementos(casa, &num);
 			   if(num>=j)
 			   {
 				   PEC_ObterCorPeca ((Peca*) LIS_ObterValor( casa ), &cor );
-				   printf("%c ",cor);
-			   }
+				   if(j==6 && num>6)
+				   {
+					   printf(" %d ",num);
+				   }/*if*/
+				   else
+				   {
+					   printf(" %c ",cor);
+				   }/*else*/
+			   }/*if*/
 			   else
 			   {
-				   printf("  ");
-			   }
-		   }
+				   printf("   ");
+			   }/*else*/
+		   }/*for*/
 		   printf("|\n|");
-	   }
+	   }/*for*/
+
 	   for(i=0;i<13;i++)
 	   {
-		   printf("- ");
-	   }
+		   printf("-- ");
+	   }/*for*/
+
+	   printf("\n");
+	   for(i=13;i<25;i++)
+	   {
+		   if(i==19)
+			   printf("   ");
+		   printf(" %d", i);
+	   }/*for*/
 
 	   printf("\n\n\n");
 
 	   return TAB_CondRetOK;
    }
 
-   /* Fim funï¿½ï¿½o: TAB  &Print tabuleiro */
+   /* Fim função: TAB  &Print tabuleiro */
 
    /***************************************************************************
 *
-*  Funï¿½ï¿½o: TAB  &Move Peï¿½a
+*  Função: TAB  &Move Peça
 *  ****/
 
    TAB_tpCondRet TAB_MoverPeca( int casaIni, int casaFim, char corJogador ) 
@@ -291,8 +333,6 @@ typedef struct tgTabuleiro
 		   return TAB_CondRetMovInvalido;
 	   }/*if*/
 
-	   LIS_ExcluirElemento( ini ) ;
-
 	   fim=IrCasa(casaFim);
 	   IrFinalLista(fim) ;
 
@@ -301,6 +341,8 @@ typedef struct tgTabuleiro
 	   {
 		   return TAB_CondRetMovInvalido;
 	   }/*if*/
+
+	   LIS_ExcluirElemento( ini ) ;
 
 	   aux=TAB_InserirPecasCasa( 1, corIni, casaFim );
 	   if(aux==TAB_CondRetFaltouMemoria)
@@ -311,11 +353,11 @@ typedef struct tgTabuleiro
 	   return TAB_CondRetOK;
    }
 
-   /* Fim funï¿½ï¿½o: TAB  &Move Peï¿½a */
+   /* Fim função: TAB  &Move Peça */
 
    /***************************************************************************
 *
-*  Funï¿½ï¿½o: TAB  &Remove Peï¿½a
+*  Função: TAB  &Remove Peça
 *  ****/
    TAB_tpCondRet TAB_RemoverPeca( int nCasa ) 
    {
@@ -334,11 +376,11 @@ typedef struct tgTabuleiro
 	   return TAB_CondRetOK;
    }
 
-   /* Fim funï¿½ï¿½o: TAB  &Remove Peï¿½a */
+   /* Fim função: TAB  &Remove Peça */
 
       /***************************************************************************
 *
-*  Funï¿½ï¿½o: TAB  &Insere Peï¿½a em Casa
+*  Função: TAB  &Insere Peça em Casa
 *  ****/
    TAB_tpCondRet TAB_InserirPecasCasa( int n, char cor, int nCasa ) 
    {
@@ -376,15 +418,15 @@ typedef struct tgTabuleiro
 	   return TAB_CondRetOK;
    }
   
-   /* Fim funï¿½ï¿½o: TAB  &Insere Peï¿½a em Casa */
+   /* Fim função: TAB  &Insere Peça em Casa */
 
-   /*****  Cï¿½digo das funï¿½ï¿½es encapsuladas no mï¿½dulo  *****/
+   /*****  Código das funções encapsuladas no módulo  *****/
 
 /***********************************************************************
 *
-*  $FC Funï¿½ï¿½o: LIS  -Ir para Casa
+*  $FC Função: LIS  -Ir para Casa
 *
-*  $ED Descriï¿½ï¿½o da funï¿½ï¿½o
+*  $ED Descrição da função
 *     Aponta o elemento corrente do tabuleiro para a nCasa desejada.
 *
 ***********************************************************************/
@@ -401,4 +443,4 @@ typedef struct tgTabuleiro
 	   return (LIS_tppLista)LIS_ObterValor( t->tabuleiro ) ;
    }
 
-    /* Fim funï¿½ï¿½o: TAB  &Ir Casa */
+    /* Fim função: TAB  &Ir Casa */

@@ -26,7 +26,7 @@
 struct dadosPontos {
 
 	//ID do ultimo jogador (1 ou 2) que requisitou a dobra dos pontos
-	int ultimo_jogador;
+	char ultimo_jogador;
 
 	//Valor atual do DadosPontos
 	int mult;
@@ -54,7 +54,7 @@ DP_tpCondRet DP_criaDadosPontos(void)
 	}
 
 	//Primeira 'dobrada' pode ser feita por qualquer jogador entao ultimo_jogador inicializa com 0
-	dp->ultimo_jogador = 0;
+	dp->ultimo_jogador = NULL;
 
 	//Multiplicador incializa com 1
 	dp->mult = 1;
@@ -66,7 +66,7 @@ DP_tpCondRet DP_criaDadosPontos(void)
 	return DP_CondRetOk;
 }
 
-DP_tpCondRet DP_dobraValor(int jogador)
+DP_tpCondRet DP_dobraValor(char jogador)
 {
 	if (dp == NULL)
 	{
@@ -74,13 +74,13 @@ DP_tpCondRet DP_dobraValor(int jogador)
 	}
 
 	//Verifica se ID do jogador � valido
-	if (jogador != 1 && jogador != 2) {
+	if (jogador != 'b' && jogador != 'p') {
 		printf("ID do jogador invalido! Deve ser 1 ou 2\n");
 		return DP_CondRetJogadorInvalido;
 	}
 
 	//Primeira 'dobrada'
-	if (dp->ultimo_jogador == 0) {
+	if (dp->ultimo_jogador == NULL) {
 
 		dp->mult = 2;
 		dp->ultimo_jogador = jogador;
@@ -106,7 +106,7 @@ DP_tpCondRet DP_dobraValor(int jogador)
 	return DP_CondRetOk;
 }
 
-DP_tpCondRet DP_lerPontos(int jogador, int *val)
+DP_tpCondRet DP_lerPontos(char jogador, int *val)
 {
 	if (dp == NULL)
 	{
@@ -114,8 +114,8 @@ DP_tpCondRet DP_lerPontos(int jogador, int *val)
 	}
 
 	//Verifica se ID do jogador � valido
-	if (jogador != 1 && jogador != 2) {
-		printf("ID do jogador invalido! Deve ser 1 ou 2\n");
+	if (jogador != 'p' && jogador != 'b') {
+		printf("ID do jogador invalido! Deve ser p ou b\n");
 		return DP_CondRetJogadorInvalido;
 	}
 
@@ -140,23 +140,23 @@ DP_tpCondRet DP_lerValorDadosPontos(int *val)
 	return DP_CondRetOk;
 }
 
-DP_tpCondRet DP_lerUltimoJogador(int *val)
+DP_tpCondRet DP_lerUltimoJogador(char *cor)
 {
 	if (dp == NULL) {
 		return DP_CondRetNaoExiste;
 	}
-	*val = dp->ultimo_jogador;
+	*cor = dp->ultimo_jogador;
 	return DP_CondRetOk;
 }
 
-DP_tpCondRet DP_modificaPontos(int valor, int jogador)
+DP_tpCondRet DP_modificaPontos(int valor, char jogador)
 {
 	if (dp == NULL) {
 		return DP_CondRetNaoExiste;
 	}
 
 	//Verifica se ID do jogador � valido
-	if (jogador != 1 && jogador != 2) {
+	if (jogador != 'p' && jogador != 'b') {
 		printf("ID do jogador invalido! Deve ser 1 ou 2\n");
 		return DP_CondRetJogadorInvalido;
 	}

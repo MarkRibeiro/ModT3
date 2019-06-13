@@ -34,6 +34,9 @@
 		{
 			d[2] = d[0];
 			d[3] = d[0];
+		}else{
+			d[2] = 0;
+			d[3] = 0;
 		} /* if */
 
 		return DAD_CondRetOK;
