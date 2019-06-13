@@ -81,7 +81,7 @@ DP_tpCondRet DP_criaDadosPontos(void);
 *	  DP_CondRetValorMaximoDado
 *
 ***********************************************************************/
-DP_tpCondRet DP_dobraValor(int jogador);
+DP_tpCondRet DP_dobraValor(char jogador);
 
 /***********************************************************************
 *
@@ -96,7 +96,7 @@ DP_tpCondRet DP_dobraValor(int jogador);
 *     DP_CondRetJogadorInvalido
 *
 ***********************************************************************/
-DP_tpCondRet DP_modificaPontos(int valor, int jogador);
+DP_tpCondRet DP_modificaPontos(int valor, char jogador);
 
 /***********************************************************************
 *
@@ -111,7 +111,7 @@ DP_tpCondRet DP_modificaPontos(int valor, int jogador);
 *     DP_CondRetJogadorInvalido
 *
 ***********************************************************************/
-DP_tpCondRet DP_lerPontos(int jogador, int *val);
+DP_tpCondRet DP_lerPontos(char jogador, int *val);
 
 /***********************************************************************
 *
@@ -139,7 +139,7 @@ DP_tpCondRet DP_lerValorDadosPontos(int *val);
 *	  DP_CondRetNaoExiste
 *
 ***********************************************************************/
-DP_tpCondRet DP_lerUltimoJogador(int *val);
+DP_tpCondRet DP_lerUltimoJogador(char *cor);
 
 /***********************************************************************
 *
