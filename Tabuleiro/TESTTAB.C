@@ -240,15 +240,15 @@
 
 				if(num==0)
 				{
-					printf("Nenhuma peca adversaria na casa em questao\n");
+					printf("\nNenhuma peca adversaria na casa em questao\n");
 				}
 				else if(num==1)
 				{
-					printf("Uma peca adversaria na casa em questao\n");
+					printf("\nUma peca adversaria na casa em questao\n");
 				}
 				else
 				{
-					printf("Mais de uma peca adversaria na casa em questao\n");
+					printf("\nMais de uma peca adversaria na casa em questao\n");
 				}
 
 				return TST_CondRetOK ;

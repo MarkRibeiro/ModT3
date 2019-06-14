@@ -58,7 +58,7 @@
 =checar 17 'b'
 
 ==checa casa 18
-=checar 18 'b'
+=checar 24 'b'
 
 ==destruir tabuleiro
 =destruir
