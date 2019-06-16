@@ -11,6 +11,7 @@
 *
 *  $HA Histórico de evolução:
 *     Versão   Autores	  Data					Observações
+*		 6		cgm			16/06				Add func quadrante
 *		 5		cgm			13/06				Add func Checa casa e ajuste na mover peca
 *		 4		cgm			13/05				Ajustes finais
 *		 3		cgm			11/05				Correção de bugs
@@ -350,6 +351,52 @@ typedef struct tgTabuleiro
 	   }/*else*/
    }
    /* Fim função: TAB  &Checa Casa */
+
+         /***************************************************************************
+*
+*  Função: TAB  &Checa Quadrante
+*  ****/
+   int TAB_ChecaQuadrante (char c)
+   {
+	   int num, i, sum=0;
+	   char corAux;
+	   LIS_tppLista casa;
+	   if(c=='b')
+	   {
+			for(i=19;i<25;i++)
+			{
+				casa=IrCasa(i);
+				PEC_ObterCorPeca ((Peca*) LIS_ObterValor( casa ), &corAux);
+				if(corAux=='b')
+				{
+					pegaNumElementos(casa, &num);
+					sum = sum + num;
+				}
+			}
+	   }
+	   else
+	   {
+		   for(i=1;i<7;i++)
+			{
+				casa=IrCasa(i);
+				PEC_ObterCorPeca ((Peca*) LIS_ObterValor( casa ), &corAux);
+				if(corAux=='p')
+				{
+					pegaNumElementos(casa, &num);
+					sum = sum + num;
+				}
+			}
+	   }
+	   if(sum==12)
+	   {
+		   return 1;
+	   }/*if*/
+	   else
+	   {
+		   return 0;
+	   }/*else*/
+   }
+   /* Fim função: TAB  &Checa Quadrante */
 
    /***************************************************************************
 *

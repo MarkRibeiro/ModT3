@@ -4,13 +4,14 @@
 *  Arquivo gerado:              TESTTAB.C
 *  Letras identificadoras:      TESTAB
 *
-*  Projeto: Trabaolho 2 Modular
+*  Projeto: Trabaolho 3 Modular
 *  Autores: cgm - Caio Graça Melo
 *			mr - Mark Ribeiro
 *			lb - Lucca Buffara
 *
 *  $HA Histórico de evolução:
 *    Versão	  Autores		 	 Data			Observações
+*	   2		cgm				16/06/2019	   Add funcs checa e quadrante
 *      1		cgm			  	03/05/2019     Modulo de teste criado
 *
 *  $ED Descrição do módulo
@@ -32,6 +33,9 @@
 *
 *	  "=checar" <int> <char>
 *		- chama a funcao TAB_ChecaCasa(<int> <char>)
+*
+*	  "=quadrante" <char>
+*		- chama a funcao TAB_ChecaQuadrante(<int>)
 *
 *     "=remover <int>"
 *       - chama função TAB_RemoverPecaCasa( <int> )
@@ -60,6 +64,7 @@
 #define     REMOVE_CMD         	"=remover"
 #define     MOVE_CMD         	"=mover"
 #define     CHECA_CMD         	"=checar"
+#define     QUAD_CMD         	"=quadrante"
 #define     IMPRIMI_CMD         "=imprimir"
 #define     DESTROI_CMD         "=destruir"
 
@@ -240,20 +245,45 @@
 
 				if(num==0)
 				{
-					printf("\nNenhuma peca adversaria na casa em questao\n");
+					printf("Nenhuma peca adversaria na casa em questao\n");
 				}
 				else if(num==1)
 				{
-					printf("\nUma peca adversaria na casa em questao\n");
+					printf("Uma peca adversaria na casa em questao\n");
 				}
 				else
 				{
-					printf("\nMais de uma peca adversaria na casa em questao\n");
+					printf("Mais de uma peca adversaria na casa em questao\n");
 				}
 
 				return TST_CondRetOK ;
 
-			} /* fim ativa: Testar TAB Destruir Tabuleiro */
+			} /* fim ativa: Testar TAB Checa Casa */
+
+			else if ( strcmp( ComandoTeste , QUAD_CMD ) == 0 )
+			{
+				int num;
+				NumLidos = LER_LerParametros( "c" ,
+										 &ValorDadoCor ) ;
+				if ( NumLidos != 1)
+				{
+					return TST_CondRetParm ;
+				} /* if */
+
+				num=TAB_ChecaQuadrante( ValorDadoCor);
+
+				if(num==1)
+				{
+					printf("Cor em questao ja pode finalizar\n");
+				}
+				else
+				{
+					printf("Cor em questao nao pode finalizar\n");
+				}
+
+				return TST_CondRetOK ;
+
+			} /* fim ativa: Testar TAB Checa Casa */
 
 		return TST_CondRetNaoConhec ;
 

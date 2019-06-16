@@ -12,6 +12,7 @@
 *
 *  $HA Histórico de evolução:
 *     Versão   Autores	  Data					Observações
+*		 5		cgm			16/06				Add func quadrante
 *		 4		cgm			13/06				Add func checa casa
 *		 3		cgm			13/05				Ajustes finais
 *		 2		cgm			11/05				Correção de bugs
@@ -212,5 +213,22 @@
 *
 *************************************************************************/
    int TAB_ChecaCasa (int nCasa, char c);
+
+      /*************************************************************************
+*
+*	$FC Função: TAB Checa Quadrante
+*
+*  $ED Descrição da função
+*     Checa a a possibilidade de finalizacao de pecas para uma certa cor.
+*
+*	Assertivas de entrada e saida:
+*	Nao existem parametros nessa função
+*
+*	$FV Valores de retorno:
+*		- 0 se a cor em questao ainda nao pode finalizar alguma peca
+*		- 1 se a cor em questao ja pode finalizar alguma peca
+*
+*************************************************************************/
+   int TAB_ChecaQuadrante (char c);
 
 /********** Fim do módulo de definição: Módulo Tabuleiro **********/
