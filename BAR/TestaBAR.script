@@ -16,19 +16,10 @@
 =remover 'b' 2
 
 ==insere peca branca no BAR
-=inserir 'b' 0
-
-==insere peca branca no BAR
-=inserir 'b' 0
-
-==insere peca branca no BAR
-=inserir 'b' 0
+=inserir 'b' 3 0
 
 ==insere peca preta no BAR
-=inserir 'p' 0
-
-==insere peca preta no BAR
-=inserir 'p' 0
+=inserir 'p' 2 0
 
 ==pega o num de pecas brancas no BAR
 =num 'b' 0

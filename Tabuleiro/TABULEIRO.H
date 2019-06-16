@@ -5,7 +5,7 @@
 *  Arquivo gerado:              TABULEIRO.H
 *  Letras identificadoras:      TAB
 *
-*  Projeto: Trabalho 2 Modular
+*  Projeto: Trabalho 3 Modular
 *  Autores: cgm - Caio Graça Melo
 *			mr - Mark Ribeiro
 *			lb - Lucca Buffara
@@ -153,7 +153,7 @@
 *
 *************************************************************************/
 
-   TAB_tpCondRet TAB_InserirPecasCasa(int n, int nCasa, char c ) ;
+   TAB_tpCondRet TAB_InserirPecasCasa(int n, char cor, int nCasa ) ;
 
 
 /*************************************************************************
@@ -211,6 +211,6 @@
 *		- 2 se houver mais de uma peca adversaria na casa
 *
 *************************************************************************/
-   int TAB_ChecaCasa (int nCasa, char c)
+   int TAB_ChecaCasa (int nCasa, char c);
 
 /********** Fim do módulo de definição: Módulo Tabuleiro **********/

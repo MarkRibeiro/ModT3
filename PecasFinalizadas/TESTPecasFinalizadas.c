@@ -134,14 +134,14 @@
 			else if ( strcmp( ComandoTeste , INSERE_CMD ) == 0 )
 			{
 
-				NumLidos = LER_LerParametros( "ci" ,
-										 &ValorDadoCor , &CondRetEsperada ) ;
-				if ( NumLidos != 2 )
+				NumLidos = LER_LerParametros( "cii" ,
+										 &ValorDadoCor, &ValorDadoInt , &CondRetEsperada ) ;
+				if ( NumLidos != 3 )
 				{
 					return TST_CondRetParm ;
 				} /* if */
 
-				CondRetObtido = PFN_Inserir( ValorDadoCor) ;
+				CondRetObtido = PFN_Inserir( ValorDadoCor, ValorDadoInt) ;
 
 				return TST_CompararInt( CondRetEsperada , CondRetObtido ,
 												"Retorno errado ao inserir peça no PFN." ) ;

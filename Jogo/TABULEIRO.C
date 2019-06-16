@@ -4,13 +4,14 @@
 *  Arquivo gerado:              TABULEIRO.C
 *  Letras identificadoras:      TAB
 *
-*  Projeto: Trabaolho 2 Modular
+*  Projeto: Trabaolho 3 Modular
 *  Autores: cgm - Caio Graça Melo
 *			mr - Mark Ribeiro
 *			lb - Lucca Buffara
 *
 *  $HA Histórico de evolução:
 *     Versão   Autores	  Data					Observações
+*		 5		cgm			13/06				Add func Checa casa e ajuste na mover peca
 *		 4		cgm			13/05				Ajustes finais
 *		 3		cgm			11/05				Correção de bugs
 *		 2		cgm			04/05				Revisão de algumas funções criadas
@@ -58,10 +59,16 @@ typedef struct tgTabuleiro
 *
 *  Função: TAB  &Criar Tabuleiro
 *  ****/
-
+	/*Função auxiliar do Criar Tabuleiro*/
+   void ExcluirTabuleiro(void*ponteiro)
+   {
+	   free(ponteiro);
+   }
+   /*Fim Função auxiliar do Criar Tabuleiro*/
    TAB_tpCondRet TAB_CriarTabuleiro(
              void   ( * ExcluirValor ) ( void * pDado ) )
    {
+	   int i;
       t = ( tpTabuleiro*)malloc( sizeof( tpTabuleiro )) ;
       if ( t == NULL )
       {
@@ -69,6 +76,17 @@ typedef struct tgTabuleiro
       } /* if */
 
 	  t->tabuleiro = NULL ;
+
+	  t->tabuleiro = LIS_CriarLista(ExcluirTabuleiro);
+	   if(t==NULL)
+	   {
+		   return TAB_CondRetFaltouMemoria;
+	   }/*if*/
+	   for(i=0;i<24;i++)
+	   {
+		   LIS_InserirElementoApos( t->tabuleiro ,
+                                          LIS_CriarLista(ExcluirTabuleiro));
+	   }/*for*/
 
       return TAB_CondRetOK ;
 
@@ -93,12 +111,6 @@ typedef struct tgTabuleiro
 *
 *  Função: TAB  &Arruma tabuleiro
 *  ****/
-   /*Função auxiliar do Arruma Tabuleiro*/
-   void Excluir(void*ponteiro)
-   {
-	   free(ponteiro);
-   }
-   /*Fim Função auxiliar do Arruma Tabuleiro*/
 
    TAB_tpCondRet TAB_ArrumarTabuleiro( void )
    {
@@ -108,16 +120,6 @@ typedef struct tgTabuleiro
 	   {
 		   return TAB_CondRetTabNaoExiste;
 	   }/*if*/
-	   t->tabuleiro = LIS_CriarLista(Excluir);
-	   if(t==NULL)
-	   {
-		   return TAB_CondRetFaltouMemoria;
-	   }/*if*/
-	   for(i=0;i<24;i++)
-	   {
-		   LIS_InserirElementoApos( t->tabuleiro ,
-                                          LIS_CriarLista(Excluir));
-	   }/*for*/
 
 	   aux=TAB_InserirPecasCasa( 2, 'b', 1 );
 	   if(aux==TAB_CondRetFaltouMemoria)
@@ -299,6 +301,56 @@ typedef struct tgTabuleiro
 
    /* Fim função: TAB  &Print tabuleiro */
 
+      /***************************************************************************
+*
+*  Função: TAB  &Remove Peça
+*  ****/
+   TAB_tpCondRet TAB_RemoverPeca( int nCasa ) 
+   {
+	   LIS_tppLista casa=NULL;
+	   if(t==NULL)
+	   {
+		   return TAB_CondRetTabNaoExiste;
+	   }/*if*/
+	   if(nCasa<1 || nCasa>24)
+	   {
+		   return TAB_CondRetNumCasaNaoExiste;
+	   }/*if*/
+	   casa=IrCasa(nCasa);
+	   IrFinalLista(casa) ;
+	   LIS_ExcluirElemento( casa ) ;
+	   return TAB_CondRetOK;
+   }
+
+   /* Fim função: TAB  &Remove Peça */
+
+       /***************************************************************************
+*
+*  Função: TAB  &Checa Casa
+*  ****/
+   int TAB_ChecaCasa (int nCasa, char c)
+   {
+	   int num;
+	   char corFim=NULL;
+	   LIS_tppLista casa=IrCasa(nCasa);
+	   pegaNumElementos(casa, &num);
+	   IrFinalLista(casa) ;
+	   PEC_ObterCorPeca ((Peca*) LIS_ObterValor( casa ), &corFim);
+	   if(num>1 && corFim!=c)
+	   {
+		   return num;
+	   }/*if*/
+	   else if(num==1 && corFim!=c)
+	   {
+		   return 1;
+	   }/*else if*/
+	   else
+	   {
+		   return 0;
+	   }/*else*/
+   }
+   /* Fim função: TAB  &Checa Casa */
+
    /***************************************************************************
 *
 *  Função: TAB  &Move Peça
@@ -306,13 +358,30 @@ typedef struct tgTabuleiro
 
    TAB_tpCondRet TAB_MoverPeca( int casaIni, int casaFim, char corJogador ) 
    {
+	   int validaCasa;
 	   TAB_tpCondRet aux;
 	   char corIni=NULL, corFim=NULL;
 	   LIS_tppLista ini=NULL, fim=NULL;
 
+	   validaCasa=TAB_ChecaCasa(casaFim, corJogador);
+
+	   if(validaCasa==2)
+	   {
+		   return TAB_CondRetMovInvalido;
+	   }/*if*/
+
+	   if(validaCasa==1)
+	   {
+		   TAB_RemoverPeca(casaFim);
+	   }
+
 	   if(t==NULL)
 	   {
 		   return TAB_CondRetTabNaoExiste;
+	   }/*if*/
+	   if((corJogador=='b' && casaFim<casaIni) || (corJogador=='p' && casaIni<casaFim))
+	   {
+		   return TAB_CondRetMovInvalido;
 	   }/*if*/
 	   if((casaIni<1 || casaIni>24) || (casaFim<1 || casaFim>24))
 	   {
@@ -354,29 +423,6 @@ typedef struct tgTabuleiro
    }
 
    /* Fim função: TAB  &Move Peça */
-
-   /***************************************************************************
-*
-*  Função: TAB  &Remove Peça
-*  ****/
-   TAB_tpCondRet TAB_RemoverPeca( int nCasa ) 
-   {
-	   LIS_tppLista casa=NULL;
-	   if(t==NULL)
-	   {
-		   return TAB_CondRetTabNaoExiste;
-	   }/*if*/
-	   if(nCasa<1 || nCasa>24)
-	   {
-		   return TAB_CondRetNumCasaNaoExiste;
-	   }/*if*/
-	   casa=IrCasa(nCasa);
-	   IrFinalLista(casa) ;
-	   LIS_ExcluirElemento( casa ) ;
-	   return TAB_CondRetOK;
-   }
-
-   /* Fim função: TAB  &Remove Peça */
 
       /***************************************************************************
 *

@@ -11,6 +11,7 @@
 *
 *  $HA Histórico de evolução:
 *     Versão   Autores    Data      Observações
+*		 4		cgm		  16/06		Ajustes nos parametros da funcao de inserir
 *        3      cgm       11/06     Criação de scripts de teste do modulo
 *        2      cgm       09/06     Finalização do modulo
 *        1      mr        07/06     Criado o módulo
@@ -78,7 +79,7 @@
 *
 *************************************************************************/
 
-   PFN_tpCondRet PFN_Inserir( char c ) ;
+   PFN_tpCondRet PFN_Inserir( char c, int n ) ;
 
    /***********************************************************************
 *

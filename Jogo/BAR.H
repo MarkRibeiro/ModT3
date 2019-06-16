@@ -12,6 +12,7 @@
 *
 *  $HA Histórico de evolução:
 *     Versão   Autores	  Data					Observações
+*		 2		cgm			16/06				Ajustes nos parametros da funcao de inserir
 *	  	 1		cgm			30/05				Criado o módulo
 *
 *  $ED Descrição do módulo
@@ -91,7 +92,7 @@
 *
 *************************************************************************/
 
-   BAR_tpCondRet BAR_Inserir( char c ) ;
+   BAR_tpCondRet BAR_Inserir( char c, int n ) ;
 
    /***********************************************************************
 *

@@ -11,6 +11,7 @@
 *
 *  $HA Histórico de evolução:
 *     Versão   Autores	  Data					Observações
+*		 4		cgm			16/06				Ajustes na funcao de inserir
 *		 4		cgm			13/05				Ajustes finais
 *		 3		cgm			11/05				Correção de bugs
 *		 2		cgm			04/05				Revisão de algumas funções criadas
@@ -54,7 +55,7 @@ typedef struct tgBAR
 *  Função: TAB  &Criar Tabuleiro
 *  ****/
 	/*Função auxiliar do Criar BAR*/
-   void Excluir(void*ponteiro)
+   void ExcluirBAR(void*ponteiro)
    {
 	   free(ponteiro);
    }
@@ -71,7 +72,7 @@ typedef struct tgBAR
       } /* if */
 
 	  b->bar=NULL;
-	  b->bar = LIS_CriarLista(Excluir);
+	  b->bar = LIS_CriarLista(ExcluirBAR);
 	  if(b->bar==NULL)
 	  {
 		  return BAR_CondRetFaltouMemoria;
@@ -80,7 +81,7 @@ typedef struct tgBAR
 	  for(i=0;i<2;i++)
 	   {
 		   LIS_InserirElementoApos( b->bar ,
-                                          LIS_CriarLista(Excluir));
+                                          LIS_CriarLista(ExcluirBAR));
 	   }/*for*/
 
       return BAR_CondRetOK ;
@@ -107,18 +108,13 @@ typedef struct tgBAR
 *  Função: TAB  &Inserir BAR
 *  ****/
 
-   BAR_tpCondRet BAR_Inserir( char c )
+   BAR_tpCondRet BAR_Inserir( char c, int n )
    {
+	   int i=0;
 	   Peca *p=NULL;
 	   LIS_tppLista listaCorr=NULL;
 	   LIS_tpCondRet auxLis;
 	   PEC_tpCondRet auxPec;
-
-	   auxPec = PEC_CriaPeca( &p, c );
-	   if(auxPec ==PEC_CondRetFaltouMemoria)
-	   {
-		   return BAR_CondRetFaltouMemoria;
-	   }
 
 	   if(c=='b')
 	   {
@@ -131,11 +127,22 @@ typedef struct tgBAR
 	   }
 
 	   listaCorr=(LIS_tppLista)LIS_ObterValor( b->bar ) ;
-	   auxLis=LIS_InserirElementoApos( listaCorr , p);	
-	   if(auxLis==LIS_CondRetFaltouMemoria)
+
+	   while(i<n)
 	   {
-		   return BAR_CondRetFaltouMemoria;
-	   }/*if*/
+		   auxPec = PEC_CriaPeca( &p, c );
+		   if(auxPec ==PEC_CondRetFaltouMemoria)
+		   {
+			   return BAR_CondRetFaltouMemoria;
+		   }
+
+		   auxLis=LIS_InserirElementoApos( listaCorr , p);	
+		   if(auxLis==LIS_CondRetFaltouMemoria)
+		   {
+			   return BAR_CondRetFaltouMemoria;
+		   }/*if*/
+		   n++;
+	   }
 
 	   return BAR_CondRetOK;
 

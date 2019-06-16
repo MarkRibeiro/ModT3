@@ -1,31 +1,32 @@
 /***************************************************************************
 *
-*  $MCD Mï¿½dulo de definiï¿½ï¿½o: Mï¿½dulo Tabuleiro
+*  $MCD Módulo de definição: Módulo Tabuleiro
 *
 *  Arquivo gerado:              TABULEIRO.H
 *  Letras identificadoras:      TAB
 *
-*  Projeto: Trabalho 2 Modular
-*  Autores: cgm - Caio Graï¿½a Melo
+*  Projeto: Trabalho 3 Modular
+*  Autores: cgm - Caio Graça Melo
 *			mr - Mark Ribeiro
 *			lb - Lucca Buffara
 *
-*  $HA Histï¿½rico de evoluï¿½ï¿½o:
-*     Versï¿½o   Autores	  Data					Observaï¿½ï¿½es
+*  $HA Histórico de evolução:
+*     Versão   Autores	  Data					Observações
+*		 4		cgm			13/06				Add func checa casa
 *		 3		cgm			13/05				Ajustes finais
-*		 2		cgm			11/05				Correï¿½ï¿½o de bugs
-*	  	 1		cgm			03/05				Criado o mï¿½dulo
+*		 2		cgm			11/05				Correção de bugs
+*	  	 1		cgm			03/05				Criado o módulo
 *
-*  $ED Descriï¿½ï¿½o do mï¿½dulo
-*		Mï¿½dulo que contï¿½m as funï¿½ï¿½es que o tabuleiro disponibiliza para 
-*		serem usadas pelo jogo. Alï¿½m disso tambï¿½m sï¿½o disponibilizadas
-*		as condiï¿½oes de retorno das funï¿½ï¿½es em questï¿½o.
+*  $ED Descrição do módulo
+*		Módulo que contém as funções que o tabuleiro disponibiliza para 
+*		serem usadas pelo jogo. Além disso também são disponibilizadas
+*		as condiçoes de retorno das funções em questão.
 *
 ***************************************************************************/
 
 /***********************************************************************
 *
-*  $TC Tipo de dados: TAB Condiï¿½ï¿½es de retorno
+*  $TC Tipo de dados: TAB Condições de retorno
 *
 *
 ***********************************************************************/
@@ -36,32 +37,32 @@
                /* Executou correto */
 
          TAB_CondRetFaltouMemoria,
-               /* Faltou memï¿½ria ao alocar dados */
+               /* Faltou memória ao alocar dados */
 
          TAB_CondRetTabNaoExiste,
-               /* Tabuleiro nï¿½o existe */
+               /* Tabuleiro não existe */
 
          TAB_CondRetNumCasaNaoExiste,
-               /* Numero da casa fornecida nï¿½o existe */
+               /* Numero da casa fornecida não existe */
 
          TAB_CondRetCasaVazia,
-               /* A casa estï¿½ vazia*/
+               /* A casa está vazia*/
 
 		 TAB_CondRetMovInvalido,
-               /* Movimento da peï¿½a invï¿½lido*/
+               /* Movimento da peça inválido*/
 
    } TAB_tpCondRet ;
 
 
 /***********************************************************************
 *
-*	$FC Funï¿½ï¿½o: TAB Criar tabuleiro
+*	$FC Função: TAB Criar tabuleiro
 *
-*  $ED Descriï¿½ï¿½o da funï¿½ï¿½o
-*     Cria um tabuleiro de gamï¿½o.
+*  $ED Descrição da função
+*     Cria um tabuleiro de gamão.
 *
 *	Assertivas de entrada e saida:
-*	Funï¿½ï¿½o nï¿½o recebe parï¿½metros.
+*	Função não recebe parâmetros.
 *
 *	$FV Valores de retorno:
 *		- TAB_CondRetOK
@@ -69,18 +70,18 @@
 *
 *************************************************************************/
 
-   TAB_tpCondRet TAB_CriarTabuleiro(   ) ;
+   TAB_tpCondRet TAB_CriarTabuleiro( void ) ;
 
    /***********************************************************************
 *
-*	$FC Funï¿½ï¿½o: TAB Arrumar tabuleiro
+*	$FC Função: TAB Arrumar tabuleiro
 *
-*  $ED Descriï¿½ï¿½o da funï¿½ï¿½o
-*     Organiza o tabuleiro de gamï¿½o padrï¿½o de forma que todas as peï¿½as estejam 
-*	  em suas posiï¿½ï¿½es iniciais.
+*  $ED Descrição da função
+*     Organiza o tabuleiro de gamão padrão de forma que todas as peças estejam 
+*	  em suas posições iniciais.
 *
 *	Assertivas de entrada e saida:
-*	Funï¿½ï¿½o nï¿½o recebe parï¿½metros.
+*	Função não recebe parâmetros.
 *
 *	$FV Valores de retorno:
 *		- TAB_CondRetOK
@@ -94,13 +95,13 @@
 
 /*************************************************************************
 *
-*	$FC Funï¿½ï¿½o: TAB Destruir Tabuleiro
+*	$FC Função: TAB Destruir Tabuleiro
 *
-*  $ED Descriï¿½ï¿½o da funï¿½ï¿½o
-*     Remove o tabuleiro existente. Nada ocorre se nï¿½o houver um tabuleiro
-*	  jï¿½ criado	
+*  $ED Descrição da função
+*     Remove o tabuleiro existente. Nada ocorre se não houver um tabuleiro
+*	  já criado	
 *	Assertivas de entrada e saida:
-*	Funï¿½ao que nï¿½o recebe parametros e tem valor de retorno void.
+*	Funçao que não recebe parametros e tem valor de retorno void.
 *
 *************************************************************************/
 
@@ -109,15 +110,15 @@
 
    /*************************************************************************
 *
-*	$FC Funï¿½ï¿½o: TAB Move Peï¿½a
+*	$FC Função: TAB Move Peça
 *
-*  $ED Descriï¿½ï¿½o da funï¿½ï¿½o
-*     Faz o movimento da peï¿½a.
+*  $ED Descrição da função
+*     Faz o movimento da peça.
 *	
 *	Assertivas de entrada e saida:
-*	$EP Parï¿½metros:
-*     $P casaIni - Casa de saï¿½da da peï¿½a
-*     $P casaFim - Casa de destino da peï¿½a. -1 tira a peï¿½a do tabuleiro.
+*	$EP Parâmetros:
+*     $P casaIni - Casa de saída da peça
+*     $P casaFim - Casa de destino da peça. -1 tira a peça do tabuleiro.
 *
 *
 *	$FV Valores de retorno:
@@ -134,15 +135,15 @@
 
 /*************************************************************************
 *
-*	$FC Funï¿½ï¿½o: TAB Insere Peï¿½a na Casa
+*	$FC Função: TAB Insere Peça na Casa
 *
-*  $ED Descriï¿½ï¿½o da funï¿½ï¿½o
-*     Insere uma peï¿½a com a cor escolhida na casa de numero selecionado.
+*  $ED Descrição da função
+*     Insere uma peça com a cor escolhida na casa de numero selecionado.
 *	
 *	Assertivas de entrada e saida:
-*	$EP Parï¿½metros:
-*     $P nCasa - nï¿½mero da casa desejada
-*     $P cor - cor da peï¿½a desejada. 'p' para preta e 'b' para branca
+*	$EP Parâmetros:
+*     $P nCasa - número da casa desejada
+*     $P cor - cor da peça desejada. 'p' para preta e 'b' para branca
 *
 *	$FV Valores de retorno:
 *		- TAB_CondRetOK
@@ -152,19 +153,19 @@
 *
 *************************************************************************/
 
-   TAB_tpCondRet TAB_InserirPecasCasa(int n, char c ,int nCasa) ;
+   TAB_tpCondRet TAB_InserirPecasCasa(int n, char cor, int nCasa ) ;
 
 
 /*************************************************************************
 *
-*	$FC Funï¿½ï¿½o: TAB Remove Peï¿½a
+*	$FC Função: TAB Remove Peça
 *
-*  $ED Descriï¿½ï¿½o da funï¿½ï¿½o
-*     Remove peï¿½a da casa desejada. Se a casa estiver vazia, nï¿½o ocorre nada.
+*  $ED Descrição da função
+*     Remove peça da casa desejada. Se a casa estiver vazia, não ocorre nada.
 *	
 *	Assertivas de entrada e saida:
-*	$EP Parï¿½metros:
-*     $P nCasa - nï¿½mero da casa que se deseja remover.
+*	$EP Parâmetros:
+*     $P nCasa - número da casa que se deseja remover.
 *
 *	$FV Valores de retorno:
 *		- TAB_CondRetOK
@@ -178,13 +179,13 @@
 
 /*************************************************************************
 *
-*	$FC Funï¿½ï¿½o: TAB Printa Tabuleiro
+*	$FC Função: TAB Printa Tabuleiro
 *
-*  $ED Descriï¿½ï¿½o da funï¿½ï¿½o
+*  $ED Descrição da função
 *     Printa na tela o tabuleiro ativo.
 *
 *	Assertivas de entrada e saida:
-*	Nao existem parametros nessa funï¿½ï¿½o
+*	Nao existem parametros nessa função
 *
 *	$FV Valores de retorno:
 *		- TAB_CondRetOK
@@ -194,4 +195,22 @@
 
    TAB_tpCondRet TAB_PrintTabuleiro( void ) ;
 
-/********** Fim do mï¿½dulo de definiï¿½ï¿½o: Mï¿½dulo Tabuleiro **********/
+   /*************************************************************************
+*
+*	$FC Função: TAB Checa Casa
+*
+*  $ED Descrição da função
+*     Checa a presenca de pecas adversarias na casa em questao.
+*
+*	Assertivas de entrada e saida:
+*	Nao existem parametros nessa função
+*
+*	$FV Valores de retorno:
+*		- 0 se nao houverem pecas adversarias na casa
+*		- 1 se houve uma peca adversaria na casa
+*		- 2 se houver mais de uma peca adversaria na casa
+*
+*************************************************************************/
+   int TAB_ChecaCasa (int nCasa, char c);
+
+/********** Fim do módulo de definição: Módulo Tabuleiro **********/

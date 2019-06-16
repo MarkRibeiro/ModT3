@@ -4,7 +4,7 @@
 *  Arquivo gerado:              TABULEIRO.C
 *  Letras identificadoras:      TAB
 *
-*  Projeto: Trabaolho 2 Modular
+*  Projeto: Trabaolho 3 Modular
 *  Autores: cgm - Caio Graça Melo
 *			mr - Mark Ribeiro
 *			lb - Lucca Buffara
@@ -59,10 +59,16 @@ typedef struct tgTabuleiro
 *
 *  Função: TAB  &Criar Tabuleiro
 *  ****/
-
+	/*Função auxiliar do Criar Tabuleiro*/
+   void ExcluirTabuleiro(void*ponteiro)
+   {
+	   free(ponteiro);
+   }
+   /*Fim Função auxiliar do Criar Tabuleiro*/
    TAB_tpCondRet TAB_CriarTabuleiro(
              void   ( * ExcluirValor ) ( void * pDado ) )
    {
+	   int i;
       t = ( tpTabuleiro*)malloc( sizeof( tpTabuleiro )) ;
       if ( t == NULL )
       {
@@ -70,6 +76,17 @@ typedef struct tgTabuleiro
       } /* if */
 
 	  t->tabuleiro = NULL ;
+
+	  t->tabuleiro = LIS_CriarLista(ExcluirTabuleiro);
+	   if(t==NULL)
+	   {
+		   return TAB_CondRetFaltouMemoria;
+	   }/*if*/
+	   for(i=0;i<24;i++)
+	   {
+		   LIS_InserirElementoApos( t->tabuleiro ,
+                                          LIS_CriarLista(ExcluirTabuleiro));
+	   }/*for*/
 
       return TAB_CondRetOK ;
 
@@ -94,12 +111,6 @@ typedef struct tgTabuleiro
 *
 *  Função: TAB  &Arruma tabuleiro
 *  ****/
-   /*Função auxiliar do Arruma Tabuleiro*/
-   void Excluir(void*ponteiro)
-   {
-	   free(ponteiro);
-   }
-   /*Fim Função auxiliar do Arruma Tabuleiro*/
 
    TAB_tpCondRet TAB_ArrumarTabuleiro( void )
    {
@@ -109,16 +120,6 @@ typedef struct tgTabuleiro
 	   {
 		   return TAB_CondRetTabNaoExiste;
 	   }/*if*/
-	   t->tabuleiro = LIS_CriarLista(Excluir);
-	   if(t==NULL)
-	   {
-		   return TAB_CondRetFaltouMemoria;
-	   }/*if*/
-	   for(i=0;i<24;i++)
-	   {
-		   LIS_InserirElementoApos( t->tabuleiro ,
-                                          LIS_CriarLista(Excluir));
-	   }/*for*/
 
 	   aux=TAB_InserirPecasCasa( 2, 'b', 1 );
 	   if(aux==TAB_CondRetFaltouMemoria)
@@ -337,7 +338,7 @@ typedef struct tgTabuleiro
 	   PEC_ObterCorPeca ((Peca*) LIS_ObterValor( casa ), &corFim);
 	   if(num>1 && corFim!=c)
 	   {
-		   return 2;
+		   return num;
 	   }/*if*/
 	   else if(num==1 && corFim!=c)
 	   {

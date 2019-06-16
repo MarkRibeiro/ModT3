@@ -1,16 +1,17 @@
 /***************************************************************************
 *  $MCI Módulo de implementação: Módulo Pecas Finalizadas
 *
-*  Arquivo gerado:              PecasFinalizadas.C
+*  Arquivo gerado:              PFN.C
 *  Letras identificadoras:      PFN
 *
-*  Projeto: Trabaolho 2 Modular
+*  Projeto: Trabaolho 3 Modular
 *  Autores: cgm - Caio Graça Melo
 *			mr - Mark Ribeiro
 *			lb - Lucca Buffara
 *
 *  $HA Histórico de evolução:
 *     Versão   Autores	  Data		Observações
+*		 4		cgm		  16/06		Ajustes na funcao de inserir
 *		 3		cgm		  11/06		Criação de scripts de teste do modulo
 *		 2		cgm		  09/06		Finalização do modulo
 *	  	 1		mr		  07/06		Criado o módulo
@@ -23,7 +24,7 @@
 
 #include "PECA.H"
 #include "LISTA.H"
-#include "PecasFinalizadas.h"
+#include "PFN.h"
 
 /***********************************************************************
 *
@@ -91,18 +92,13 @@ typedef struct tgPFN
 *  Função: PFN  &Inserir
 *  ****/
 
-   PFN_tpCondRet PFN_Inserir( char c )
+   PFN_tpCondRet PFN_Inserir( char c, int n )
    {
+	   int i=0;
 	   Peca *p=NULL;
 	   LIS_tppLista listaCorr=NULL;
 	   LIS_tpCondRet auxLis;
 	   PEC_tpCondRet auxPec;
-
-	   auxPec = PEC_CriaPeca( &p, c );
-	   if(auxPec ==PEC_CondRetFaltouMemoria)
-	   {
-		   return PFN_CondRetFaltouMemoria;
-	   }
 
 	   if(c=='b')
 	   {
@@ -115,11 +111,22 @@ typedef struct tgPFN
 	   }
 
 	   listaCorr=(LIS_tppLista)LIS_ObterValor( f->pfn ) ;
-	   auxLis=LIS_InserirElementoApos( listaCorr , p);	
-	   if(auxLis==LIS_CondRetFaltouMemoria)
+
+	   while(i<n)
 	   {
-		   return PFN_CondRetFaltouMemoria;
-	   }/*if*/
+		   auxPec = PEC_CriaPeca( &p, c );
+		   if(auxPec ==PEC_CondRetFaltouMemoria)
+		   {
+			   return PFN_CondRetFaltouMemoria;
+		   }
+
+		   auxLis=LIS_InserirElementoApos( listaCorr , p);	
+		   if(auxLis==LIS_CondRetFaltouMemoria)
+		   {
+			   return PFN_CondRetFaltouMemoria;
+		   }/*if*/
+		   n++;
+	   }
 
 	   return PFN_CondRetOK;
 
