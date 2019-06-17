@@ -82,7 +82,7 @@
 *	  em suas posições iniciais.
 *
 *	Assertivas de entrada e saida:
-*	Função não recebe parâmetros.
+*	Entrada: t!=null
 *
 *	$FV Valores de retorno:
 *		- TAB_CondRetOK
@@ -102,6 +102,7 @@
 *     Remove o tabuleiro existente. Nada ocorre se não houver um tabuleiro
 *	  já criado	
 *	Assertivas de entrada e saida:
+*	Não existe assertivas de entrada e saida.
 *	Funçao que não recebe parametros e tem valor de retorno void.
 *
 *************************************************************************/
@@ -117,6 +118,12 @@
 *     Faz o movimento da peça.
 *	
 *	Assertivas de entrada e saida:
+*	Entrada: casaIni entre 1 e 24
+*			 casaFim entre 1 e 24 && à frente da casaIni
+*			 corJogador=='b' || corJogador=='p'
+*	Saida:   casaIni possuir -1 peca
+*			 casaFim possui +1 peca
+*
 *	$EP Parâmetros:
 *     $P casaIni - Casa de saída da peça
 *     $P casaFim - Casa de destino da peça. -1 tira a peça do tabuleiro.
@@ -142,6 +149,11 @@
 *     Insere uma peça com a cor escolhida na casa de numero selecionado.
 *	
 *	Assertivas de entrada e saida:
+*	Entrada: nCasa entre 1 e 24
+*			 n<12
+*			 cor=='b' || cor=='p'
+*	Saida:   nCasa possuir +1 peca
+
 *	$EP Parâmetros:
 *     $P nCasa - número da casa desejada
 *     $P cor - cor da peça desejada. 'p' para preta e 'b' para branca
@@ -165,6 +177,11 @@
 *     Remove peça da casa desejada. Se a casa estiver vazia, não ocorre nada.
 *	
 *	Assertivas de entrada e saida:
+*	Entrada: nCasa entre 1 e 24
+*			 n<12
+*			 cor=='b' || cor=='p'
+*	Saida:   nCasa possuir -1 peca
+*
 *	$EP Parâmetros:
 *     $P nCasa - número da casa que se deseja remover.
 *
@@ -186,7 +203,7 @@
 *     Printa na tela o tabuleiro ativo.
 *
 *	Assertivas de entrada e saida:
-*	Nao existem parametros nessa função
+*	Entrada: t!=null
 *
 *	$FV Valores de retorno:
 *		- TAB_CondRetOK
@@ -204,7 +221,9 @@
 *     Checa a presenca de pecas adversarias na casa em questao.
 *
 *	Assertivas de entrada e saida:
-*	Nao existem parametros nessa função
+*	Entrada: nCasa entre 1 e 24
+*			 cor=='b' || cor=='p'
+*	Saida: ret==0 || ret==1
 *
 *	$FV Valores de retorno:
 *		- 0 se nao houverem pecas adversarias na casa
@@ -222,7 +241,8 @@
 *     Checa a a possibilidade de finalizacao de pecas para uma certa cor.
 *
 *	Assertivas de entrada e saida:
-*	Nao existem parametros nessa função
+*	Entrada: cor=='b' || cor=='p'
+*	Saida: ret==0 || ret==1
 *
 *	$FV Valores de retorno:
 *		- 0 se a cor em questao ainda nao pode finalizar alguma peca

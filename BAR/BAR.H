@@ -51,6 +51,8 @@
 *     Cria uma estrutura que guarda as pecas capturadas de cada jogador.
 *
 *	Assertivas de entrada e saida:
+*	Saida: b!=null
+*
 *	Função não recebe parâmetros.
 *
 *	$FV Valores de retorno:
@@ -70,6 +72,7 @@
 *     Remove o BAR existente. Nada ocorre se não houver um BAR
 *	  já criado	
 *	Assertivas de entrada e saida:
+*	Não há assertivas de entrada e saida
 *	Funçao que não recebe parametros e tem valor de retorno void.
 *
 *************************************************************************/
@@ -84,7 +87,9 @@
 *     Insere uma peca na lista de pecas capturadas de um jogador.
 *
 *	Assertivas de entrada e saida:
-*	Função não recebe parâmetros.
+*	Entrada: cor=='b' || cor=='p'
+*			 b!=null
+*	Saida: BAR da cor c com uma peca a mais
 *
 *	$FV Valores de retorno:
 *		- BAR_CondRetOK
@@ -102,7 +107,9 @@
 *     Exclui uma peca da lista que guarda as pecas capturadas de um jogador.
 *
 *	Assertivas de entrada e saida:
-*	Função não recebe parâmetros.
+*	Entrada: cor=='b' || cor=='p'
+*			 b!=null
+*	Saida: BAR da cor c com uma peca a menos
 *
 *	$FV Valores de retorno:
 *		- BAR_CondRetOK
@@ -121,7 +128,9 @@
 *	  capturadas de um jogador.
 *
 *	Assertivas de entrada e saida:
-*	Função não recebe parâmetros.
+*	Entrada: cor=='b' || cor=='p'
+*			 b!=null
+*	Saida: n>=0 && n<=12
 *
 *	$FV Valores de retorno:
 *		- BAR_CondRetOK

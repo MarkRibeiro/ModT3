@@ -52,6 +52,8 @@
 *     Cria uma estrutura que guarda as pecas finalizadas de cada jogador.
 *
 *	Assertivas de entrada e saida:
+*	Saida: f!=null
+*
 *	Função não recebe parâmetros.
 *
 *	$FV Valores de retorno:
@@ -71,6 +73,10 @@
 *     Insere uma peca na lista de pecas finalizadas de um jogador.
 *
 *	Assertivas de entrada e saida:
+*	Entrada: cor=='b' || cor=='p'
+*			 f!=null
+*	Saida: PFN da cor c com uma peca a mais
+*
 *	Função não recebe parâmetros.
 *
 *	$FV Valores de retorno:
@@ -90,7 +96,9 @@
 *	  finalizadas de um jogador.
 *
 *	Assertivas de entrada e saida:
-*	Função não recebe parâmetros.
+*	Entrada: cor=='b' || cor=='p'
+*			 f!=null
+*	Saida: n>=0 && n<=12
 *
 *	$FV Valores de retorno:
 *		- PFN_CondRetOK
@@ -108,6 +116,7 @@
 *     Remove o PFN existente. Nada ocorre se não houver um PFN
 *	  já criado	
 *	Assertivas de entrada e saida:
+*	Não há assertivas de entrada e saida
 *	Funçao que não recebe parametros e tem valor de retorno void.
 *
 *************************************************************************/

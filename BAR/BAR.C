@@ -141,7 +141,7 @@ typedef struct tgBAR
 		   {
 			   return BAR_CondRetFaltouMemoria;
 		   }/*if*/
-		   n++;
+		   i++;
 	   }
 
 	   return BAR_CondRetOK;

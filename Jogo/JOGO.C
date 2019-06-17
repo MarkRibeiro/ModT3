@@ -1,26 +1,26 @@
 /***************************************************************************
-*  $MCI Módulo de implementação: Módulo Jogo
+*  $MCI Módulo de implementacao: Módulo Jogo
 *
 *  Arquivo gerado:              JOGO.C
 *  Letras identificadoras:      JOG
 *
 *  Projeto: Trabaolho 3 Modular
-*  Autores: cgm - Caio Graça Melo
+*  Autores: cgm - Caio Graca Melo
 *			mr - Mark Ribeiro
 *			lb - Lucca Buffara
 *
-*  $HA Histórico de evolução:
-*     Versão   Autores	  Data					Observações
+*  $HA Histórico de evolucao:
+*     Versao   Autores	  Data					Observacões
 *		 4		cgm			16/05				Ajustes no modulo e add opcao salvar jogo
 *		 3		mr			12/06				Adicionada a func permutacoes movimentos
-*		 2		lb			12/06				Revisão de algumas funções criadas
+*		 2		lb			12/06				Revisao de algumas funcões criadas
 *	  	 1		lb			08/06				Criado o módulo
 *
 ***************************************************************************/
 
 #include <stdlib.h>
 #include <stdio.h>
-//#include <unistd.h>
+// #include <unistd.h>
 
 #include "DADO.H"
 #include "PECA.H"
@@ -65,14 +65,12 @@ void Salva_Jogo(char jogadorVez)
 	fprintf(fptr,"%d\n",nB);
 
 	PFN_NPecas('p',&nP); //Checa o numero de pecas pretas finalizadas
-	fprintf(fptr,"%d\n",nP);
-
-	fprintf(fptr,"%c", jogadorVez);
+	fprintf(fptr,"%d",nP);
 
 	fclose(fptr);
 }
 
-void RecarregaJogo(FILE * fptr, char * c){
+void RecarregaJogo(FILE * fptr){
 	int i,n;
 	BAR_tpCondRet auxBAR;
 	char cor;
@@ -108,8 +106,6 @@ void RecarregaJogo(FILE * fptr, char * c){
 	n = atoi(&buf[0]);
 	PFN_Inserir('p',n);
 
-	fgets(buf, sizeof(buf), fptr);
-	*c=buf[0];
 
 	TAB_PrintTabuleiro();
 	BAR_NPecas('b',&n);
@@ -210,12 +206,12 @@ void visInicial(void){
                         \____/\__,_/_/ /_/ /_/\__,_/\____/                          
                                                                                        
 
-                Mark Ribeiro, Caio Graça Melo e Lucca Buffara de Almeida    
+                Mark Ribeiro, Caio Graca Melo e Lucca Buffara de Almeida    
 
                 Prof: Flavio B.               
 
     )EOF");*/
-	printf("PROG MODULAR T3\nGAMAO\n\nMark Ribeiro, Caio Graça Melo e Lucca Buffara de Almeida\nProf: Flavio B.");
+	printf("PROG MODULAR T3\nGAMAO\n\nMark Ribeiro, Caio Graca Melo e Lucca Buffara de Almeida\nProf: Flavio B.");
 }
 
 void printBanner(char *c){
@@ -326,22 +322,22 @@ char lanceInicial(int *dados){
 
         DAD_JogaDados(dados);
 
-        printf("Decidindo qual jogador começa a partida:\n");
-        printf("Lançe dos dados iniciais das pretas: \n");
+        printf("Decidindo qual jogador comeca a partida:\n");
+        printf("Lance dos dados iniciais das pretas: \n");
         mostraDado(dados[0]);
-        printf("Lançe dos dados iniciais das brancas: \n");
+        printf("Lance dos dados iniciais das brancas: \n");
         mostraDado(dados[1]);
 
         if(dados[0] > dados[1]){
-            printf("\nPretas começam a partida!\n\n");
+            printf("\nPretas comecam a partida!\n\n");
             c = 'p';
             break;
         }else if(dados[1] > dados[0]){
-            printf("\nBrancas começam a partida!\n\n");
+            printf("\nBrancas comecam a partida!\n\n");
             c = 'b';
             break;
         }else{
-            printf("Mesmo valor! Lançando novamente...\n\n");
+            printf("Mesmo valor! Lancando novamente...\n\n");
         }
     }
 
@@ -425,7 +421,7 @@ void calculaPontos(char vencedor){
         pontos_ganhos = 3;
     }else{
         pontos_ganhos = 2;
-    }
+    }   
 
     pontos_ganhos *= valor_dp;
 
@@ -465,8 +461,6 @@ int main(void){
 		if(decisao=='i')
 		{
 			initPartida();
-			//Decidir qual cor joga primeiro:
-			cor = lanceInicial(&dados);
 			break;
 		}
 		else if(decisao=='c')
@@ -477,7 +471,7 @@ int main(void){
 			}
 			else
 			{
-				RecarregaJogo(fptr, &cor);
+				RecarregaJogo(fptr);
 				break;
 			}
 		}
@@ -489,7 +483,9 @@ int main(void){
 	}
 
     getchar();
-    pausa("Inicializando a partida! [Pressione qualquer tecla]");
+    //Decidir qual cor joga primeiro:
+    cor = lanceInicial(&dados);
+    pausa("Inicializando a partida! [Pressione [ENTER] para continuar]");
     clrscr();
 
     //Main game loop
@@ -532,16 +528,16 @@ int main(void){
         if(char_aux == 'S'){
             DP_dobraValor(cor);
             DP_lerValorDadosPontos(&aux);
-            printf("Pontuação dobrada! Agora a partida esta valendo: %d\n", aux);
+            printf("Pontuacao dobrada! Agora a partida esta valendo: %d\n", aux);
         } 
 
-        printf("Pontuação atual do jogo: \n");
+        printf("Pontuacao atual do jogo: \n");
         DP_lerPontos('p', &aux);
         printf("Pretas: %d\n", aux);
         DP_lerPontos('b', &aux);
         printf("Brancas: %d\n", aux);
 
-        pausa("[Pressione qualquer tecla]");
+        pausa("[Pressione [ENTER] para continuar]");
     
         //Lancamento dos dados
         DAD_JogaDados(&dados);
@@ -564,16 +560,16 @@ int main(void){
             TAB_PrintTabuleiro();
 
             BAR_NPecas('p', &aux);
-            printf("Peças pretas capturadas: %d\n", aux);
+            printf("Pecas pretas capturadas: %d\n", aux);
 
             BAR_NPecas('b', &aux);
-            printf("Peças brancas capturadas: %d\n\n", aux);
+            printf("Pecas brancas capturadas: %d\n\n", aux);
 
             PFN_NPecas('p', &aux);
-            printf("Peças pretas finalizadas: %d\n", aux);
+            printf("Pecas pretas finalizadas: %d\n", aux);
 
             PFN_NPecas('b', &aux);
-            printf("Peças brancas finalizadas: %d\n\n", aux);
+            printf("Pecas brancas finalizadas: %d\n\n", aux);
 
             BAR_NPecas(cor, &aux);
             if(aux > 0){
@@ -608,7 +604,6 @@ int main(void){
                 
                 if((movimentos[i] > 24 || movimentos[i] < 1) && movimentos[i] > -100 && pode_finalizar){
                     printf("Finalizar peca usando dado [%d]\n",i);
-                    printf("%d\n", movimentos[i]);
                     continue;
                 }else if((movimentos[i] > 24 || movimentos[i] < 1 ) && movimentos[i] > -100){
                     continue;
@@ -629,7 +624,7 @@ int main(void){
                 }
                 printf("Escolha o numero do dado!\n");
             }
-
+            
             if(aux != -1){
                 casaDest = movimentos[aux];
                 getchar(); //Dummy getchar
@@ -655,7 +650,7 @@ int main(void){
 
             if(dados[0] == 0 && dados[1] == 0 && dados[2] == 0 && dados[3] == 0){
                 TAB_PrintTabuleiro();
-                pausa("[Pressione qualquer tecla]");
+                pausa("[Pressione [ENTER] para continuar]");
                 clrscr();
                 break;
             }

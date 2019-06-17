@@ -1,31 +1,31 @@
 /***************************************************************************
-*  $MCD Mï¿½dulo de definiï¿½ï¿½o: Mï¿½dulo PFN
+*  $MCD Módulo de definição: Módulo PFN
 *
 *  Arquivo gerado:              PecasFinalizadas.C
 *  Letras identificadoras:      PFN
 *
 *  Projeto: Trabaolho 2 Modular
-*  Autores: cgm - Caio Graï¿½a Melo
+*  Autores: cgm - Caio Graça Melo
 *           mr - Mark Ribeiro
 *           lb - Lucca Buffara
 *
-*  $HA Histï¿½rico de evoluï¿½ï¿½o:
-*     Versï¿½o   Autores    Data      Observaï¿½ï¿½es
+*  $HA Histórico de evolução:
+*     Versão   Autores    Data      Observações
 *		 4		cgm		  16/06		Ajustes nos parametros da funcao de inserir
-*        3      cgm       11/06     Criaï¿½ï¿½o de scripts de teste do modulo
-*        2      cgm       09/06     Finalizaï¿½ï¿½o do modulo
-*        1      mr        07/06     Criado o mï¿½dulo
+*        3      cgm       11/06     Criação de scripts de teste do modulo
+*        2      cgm       09/06     Finalização do modulo
+*        1      mr        07/06     Criado o módulo
 *
-*  $ED Descriï¿½ï¿½o do mï¿½dulo
-*		Mï¿½dulo que contï¿½m as funï¿½ï¿½es, que o PFN disponibiliza, para 
-*		serem usadas pelo jogo. Alï¿½m disso tambï¿½m sï¿½o disponibilizadas
-*		as condiï¿½oes de retorno das funï¿½ï¿½es em questï¿½o.
+*  $ED Descrição do módulo
+*		Módulo que contém as funções, que o PFN disponibiliza, para 
+*		serem usadas pelo jogo. Além disso também são disponibilizadas
+*		as condiçoes de retorno das funções em questão.
 *
 ***************************************************************************/
 
 /***********************************************************************
 *
-*  $TC Tipo de dados: PFN Condiï¿½ï¿½es de retorno
+*  $TC Tipo de dados: PFN Condições de retorno
 *
 *
 ***********************************************************************/
@@ -36,7 +36,7 @@
                /* Executou correto */
 
          PFN_CondRetFaltouMemoria,
-               /* Faltou memï¿½ria ao alocar dados */
+               /* Faltou memória ao alocar dados */
 
 		 PFN_CondRetVazio
 				/* PFN vazio*/
@@ -46,13 +46,15 @@
 
 /***********************************************************************
 *
-*	$FC Funï¿½ï¿½o: PFN CriarPFN
+*	$FC Função: PFN CriarPFN
 *
-*  $ED Descriï¿½ï¿½o da funï¿½ï¿½o
+*  $ED Descrição da função
 *     Cria uma estrutura que guarda as pecas finalizadas de cada jogador.
 *
 *	Assertivas de entrada e saida:
-*	Funï¿½ï¿½o nï¿½o recebe parï¿½metros.
+*	Saida: f!=null
+*
+*	Função não recebe parâmetros.
 *
 *	$FV Valores de retorno:
 *		- PFN_CondRetOK
@@ -65,13 +67,17 @@
 
    /***********************************************************************
 *
-*	$FC Funï¿½ï¿½o: PFN Inserir
+*	$FC Função: PFN Inserir
 *
-*  $ED Descriï¿½ï¿½o da funï¿½ï¿½o
+*  $ED Descrição da função
 *     Insere uma peca na lista de pecas finalizadas de um jogador.
 *
 *	Assertivas de entrada e saida:
-*	Funï¿½ï¿½o nï¿½o recebe parï¿½metros.
+*	Entrada: cor=='b' || cor=='p'
+*			 f!=null
+*	Saida: PFN da cor c com uma peca a mais
+*
+*	Função não recebe parâmetros.
 *
 *	$FV Valores de retorno:
 *		- PFN_CondRetOK
@@ -83,14 +89,16 @@
 
    /***********************************************************************
 *
-*	$FC Funï¿½ï¿½o: PFN NPecas
+*	$FC Função: PFN NPecas
 *
-*  $ED Descriï¿½ï¿½o da funï¿½ï¿½o
+*  $ED Descrição da função
 *     Pega o numero de pecas existentes na lista que guarda o numero de pecas
 *	  finalizadas de um jogador.
 *
 *	Assertivas de entrada e saida:
-*	Funï¿½ï¿½o nï¿½o recebe parï¿½metros.
+*	Entrada: cor=='b' || cor=='p'
+*			 f!=null
+*	Saida: n>=0 && n<=12
 *
 *	$FV Valores de retorno:
 *		- PFN_CondRetOK
@@ -102,13 +110,14 @@
 
 /*************************************************************************
 *
-*	$FC Funï¿½ï¿½o: PFN DestruirPFN
+*	$FC Função: PFN DestruirPFN
 *
-*  $ED Descriï¿½ï¿½o da funï¿½ï¿½o
-*     Remove o PFN existente. Nada ocorre se nï¿½o houver um PFN
-*	  jï¿½ criado	
+*  $ED Descrição da função
+*     Remove o PFN existente. Nada ocorre se não houver um PFN
+*	  já criado	
 *	Assertivas de entrada e saida:
-*	Funï¿½ao que nï¿½o recebe parametros e tem valor de retorno void.
+*	Não há assertivas de entrada e saida
+*	Funçao que não recebe parametros e tem valor de retorno void.
 *
 *************************************************************************/
 
