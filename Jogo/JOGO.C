@@ -421,7 +421,7 @@ void calculaPontos(char vencedor){
         pontos_ganhos = 3;
     }else{
         pontos_ganhos = 2;
-    }
+    }   
 
     pontos_ganhos *= valor_dp;
 
@@ -438,9 +438,9 @@ int main(void){
     TAB_tpCondRet tp_CondRet;
     FILE* fptr;
     int casaIni, casaDest, movimentosTotais, dadosPontos;
-    char cor, char_aux;
+    char cor, char_aux, decisao;
     char ultimo_a_dobrar = 'f'; //Init qualquer coisa diferente de p ou b
-    int aux, i, inseri_peca_capturada, pode_finalizar, decisao, partidas_jogadas;
+    int aux, i, inseri_peca_capturada, pode_finalizar, partidas_jogadas;
 
     // int movimento[4] = {NULL, NULL, NULL, NULL};
 
@@ -485,7 +485,7 @@ int main(void){
     getchar();
     //Decidir qual cor joga primeiro:
     cor = lanceInicial(&dados);
-    pausa("Inicializando a partida! [Pressione qualquer tecla]");
+    pausa("Inicializando a partida! [Pressione [ENTER] para continuar]");
     clrscr();
 
     //Main game loop
@@ -537,7 +537,7 @@ int main(void){
         DP_lerPontos('b', &aux);
         printf("Brancas: %d\n", aux);
 
-        pausa("[Pressione qualquer tecla]");
+        pausa("[Pressione [ENTER] para continuar]");
     
         //Lancamento dos dados
         DAD_JogaDados(&dados);
@@ -604,7 +604,6 @@ int main(void){
                 
                 if((movimentos[i] > 24 || movimentos[i] < 1) && movimentos[i] > -100 && pode_finalizar){
                     printf("Finalizar peca usando dado [%d]\n",i);
-                    printf("%d\n", movimentos[i]);
                     continue;
                 }else if((movimentos[i] > 24 || movimentos[i] < 1 ) && movimentos[i] > -100){
                     continue;
@@ -625,7 +624,7 @@ int main(void){
                 }
                 printf("Escolha o numero do dado!\n");
             }
-
+            
             if(aux != -1){
                 casaDest = movimentos[aux];
                 getchar(); //Dummy getchar
@@ -651,7 +650,7 @@ int main(void){
 
             if(dados[0] == 0 && dados[1] == 0 && dados[2] == 0 && dados[3] == 0){
                 TAB_PrintTabuleiro();
-                pausa("[Pressione qualquer tecla]");
+                pausa("[Pressione [ENTER] para continuar]");
                 clrscr();
                 break;
             }
