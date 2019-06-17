@@ -1,0 +1,10 @@
+RELATÓRIO INDIVIDUAL TRABALHO 3 DE MODULAR
+- Lucca Buffara de Almeida
+Data	Horas Trabalhadas	    Tipo Tarefa								Descrição da Tarefa Realizada
+--------------------------------------------------------------------------------------------------------------------------------------------
+12/6/2019	10hrs		    Desenvolvimento Jogo					    Programacao do modulo Jogo
+--------------------------------------------------------------------------------------------------------------------------------------------
+15/6/2019	30min		    Modelos Estruturais					      Acao do modelo estrutural da aplicacao
+--------------------------------------------------------------------------------------------------------------------------------------------
+15/6/2019	10min		    Assertivas de Entrada/Saida				 Assertivas de entrada e saida dadosPontos
+--------------------------------------------------------------------------------------------------------------------------------------------
