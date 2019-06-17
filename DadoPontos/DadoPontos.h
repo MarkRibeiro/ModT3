@@ -74,6 +74,10 @@ DP_tpCondRet DP_criaDadosPontos(void);
 *  $ED Descrição da função
 *     Dobra o valor da partida e troca o ultimo jogador para o jogador que pediu a dobra
 *
+*	Assertivas de entrada e saida:
+*		AE:
+*			char jogador contendo 'p' ou 'b'
+*
 *  $FV Valor retornado
 *     DP_CondRetOk
 *     DP_CondRetJogadorInvalido
@@ -81,7 +85,7 @@ DP_tpCondRet DP_criaDadosPontos(void);
 *	  DP_CondRetValorMaximoDado
 *
 ***********************************************************************/
-DP_tpCondRet DP_dobraValor(int jogador);
+DP_tpCondRet DP_dobraValor(char jogador);
 
 /***********************************************************************
 *
@@ -90,13 +94,19 @@ DP_tpCondRet DP_dobraValor(int jogador);
 *  $ED Descrição da função
 *     Incrementa a pontuacao de um dado jogador
 *
+*	Assertivas de entrada e saida:
+*		AE:
+*			int valor : inteiro nao negativo
+*			char jogador contendo 'p' ou 'b'
+*
+*
 *  $FV Valor retornado
 *     DP_CondRetOk
 *	  DP_CondRetNaoExiste
 *     DP_CondRetJogadorInvalido
 *
 ***********************************************************************/
-DP_tpCondRet DP_modificaPontos(int valor, int jogador);
+DP_tpCondRet DP_modificaPontos(int valor, char jogador);
 
 /***********************************************************************
 *
@@ -105,13 +115,18 @@ DP_tpCondRet DP_modificaPontos(int valor, int jogador);
 *  $ED Descrição da função
 *     Retorna a pontuacao de um dado jogador
 *
+*	  Assertivas de entrada e saida:
+*		AE:
+*			char jogador contendo 'p' ou 'b'
+*			int *val um endereco que aponta para uma variavel do tipo inteiro
+*
 *  $FV Valor retornado
 *     DP_CondRetOk
 *	  DP_CondRetNaoExiste
 *     DP_CondRetJogadorInvalido
 *
 ***********************************************************************/
-DP_tpCondRet DP_lerPontos(int jogador, int *val);
+DP_tpCondRet DP_lerPontos(char jogador, int *val);
 
 /***********************************************************************
 *
@@ -119,6 +134,10 @@ DP_tpCondRet DP_lerPontos(int jogador, int *val);
 *
 *  $ED Descrição da função
 *     Retorna o valor atual do DadosPontos
+*
+*	  Assertivas de entrada e saida:
+*		AE:
+*			int *val um endereco que aponta para uma variavel do tipo inteiro
 *
 *  $FV Valor retornado
 *     DP_CondRetOk
@@ -134,12 +153,16 @@ DP_tpCondRet DP_lerValorDadosPontos(int *val);
 *  $ED Descrição da função
 *     Retorna o id do ultimo jogador a dobrar
 *
+*	  Assertivas de entrada e saida:
+*		AE:
+*			char cor contendo 'p' ou 'b'
+*
 *  $FV Valor retornado
 *     DP_CondRetOk
 *	  DP_CondRetNaoExiste
 *
 ***********************************************************************/
-DP_tpCondRet DP_lerUltimoJogador(int *val);
+DP_tpCondRet DP_lerUltimoJogador(char *cor);
 
 /***********************************************************************
 *
@@ -147,6 +170,11 @@ DP_tpCondRet DP_lerUltimoJogador(int *val);
 
 *  $ED Descrição da função
 *     Libera memoria alocada
+*
+*	  Assertivas de entrada e saida:
+*		AE:
+*			<Funcao nao recebe nada>
+*
 *
 *  $FV Valor retornado
 *     DP_CondRetOk
