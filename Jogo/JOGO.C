@@ -20,7 +20,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include <unistd.h>
+//#include <unistd.h>
 
 #include "DADO.H"
 #include "PECA.H"
@@ -65,12 +65,14 @@ void Salva_Jogo(char jogadorVez)
 	fprintf(fptr,"%d\n",nB);
 
 	PFN_NPecas('p',&nP); //Checa o numero de pecas pretas finalizadas
-	fprintf(fptr,"%d",nP);
+	fprintf(fptr,"%d\n",nP);
+
+	fprintf(fptr,"%c", jogadorVez);
 
 	fclose(fptr);
 }
 
-void RecarregaJogo(FILE * fptr){
+void RecarregaJogo(FILE * fptr, char * c){
 	int i,n;
 	BAR_tpCondRet auxBAR;
 	char cor;
@@ -106,6 +108,8 @@ void RecarregaJogo(FILE * fptr){
 	n = atoi(&buf[0]);
 	PFN_Inserir('p',n);
 
+	fgets(buf, sizeof(buf), fptr);
+	*c=buf[0];
 
 	TAB_PrintTabuleiro();
 	BAR_NPecas('b',&n);
@@ -120,7 +124,7 @@ void RecarregaJogo(FILE * fptr){
 //Limpa a tela
 void clrscr()
 {
-    system("clear");
+    system("cls");
 }
 
 //Pause e espera uma tecla ser pressionada
@@ -438,9 +442,9 @@ int main(void){
     TAB_tpCondRet tp_CondRet;
     FILE* fptr;
     int casaIni, casaDest, movimentosTotais, dadosPontos;
-    char cor, char_aux;
+    char cor, char_aux, decisao;
     char ultimo_a_dobrar = 'f'; //Init qualquer coisa diferente de p ou b
-    int aux, i, inseri_peca_capturada, pode_finalizar, decisao, partidas_jogadas;
+    int aux, i, inseri_peca_capturada, pode_finalizar, partidas_jogadas;
 
     // int movimento[4] = {NULL, NULL, NULL, NULL};
 
@@ -461,6 +465,8 @@ int main(void){
 		if(decisao=='i')
 		{
 			initPartida();
+			//Decidir qual cor joga primeiro:
+			cor = lanceInicial(&dados);
 			break;
 		}
 		else if(decisao=='c')
@@ -471,7 +477,7 @@ int main(void){
 			}
 			else
 			{
-				RecarregaJogo(fptr);
+				RecarregaJogo(fptr, &cor);
 				break;
 			}
 		}
@@ -483,8 +489,6 @@ int main(void){
 	}
 
     getchar();
-    //Decidir qual cor joga primeiro:
-    cor = lanceInicial(&dados);
     pausa("Inicializando a partida! [Pressione qualquer tecla]");
     clrscr();
 
