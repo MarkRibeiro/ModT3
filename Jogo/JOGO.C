@@ -395,7 +395,40 @@ void mostraLanceDados(int *dados, char *c){
 }
 
 //Calcula e acrescenta pontos
-void calculaPontos(){
+void calculaPontos(char vencedor){
+    int pontos_ganhos, pecas_bar, pfn, valor_dp;
+    
+    DP_lerValorDadosPontos(&valor_dp);
+
+    clrscr();
+    if(vencedor == 'p'){
+        printf("PRETAS VENCERAM!\n\n");
+        
+        PFN_NPecas('b', &pfn); 
+        BAR_NPecas('b', &pecas_bar);
+
+    }else{
+        printf("BRANCAS VENCERAM!\n\n");
+
+        PFN_NPecas('b', &pfn); 
+        BAR_NPecas('b', &pecas_bar);
+        
+    }
+
+    if(pfn > 0 && pecas_bar == 0){
+        pontos_ganhos = 1;
+    }else if(pecas_bar > 0){
+        pontos_ganhos = 3;
+    }else{
+        pontos_ganhos = 2;
+    }
+
+    pontos_ganhos *= valor_dp;
+
+    printf("Total de pontos ganhos: %d\n", pontos_ganhos);
+
+    DP_modificaPontos(pontos_ganhos, vencedor);    
+
     return;
 }
 
@@ -407,7 +440,7 @@ int main(void){
     int casaIni, casaDest, movimentosTotais, dadosPontos;
     char cor, char_aux;
     char ultimo_a_dobrar = 'f'; //Init qualquer coisa diferente de p ou b
-    int aux, i, inseri_peca_capturada, pode_finalizar, decisao;
+    int aux, i, inseri_peca_capturada, pode_finalizar, decisao, partidas_jogadas;
 
     // int movimento[4] = {NULL, NULL, NULL, NULL};
 
@@ -475,7 +508,7 @@ int main(void){
                 clrscr();
                 printf("Pretas venceram essa partida!\n");
             }
-            calculaPontos();
+            calculaPontos(cor);
             break;
         }
 
