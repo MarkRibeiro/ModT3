@@ -1,6 +1,6 @@
 
 !!! Inicio dos testes
-!!!      Construto sob teste: T2M.exe
+!!!      Construto sob teste: TRAB3-6.exe
 !!!      Script de teste:     TestaBAR.script
 
 !!!    0  Linha:     1  // Script:    TestaBAR.script 
@@ -12,21 +12,18 @@
    12  ==pega o num de pecas brancas no BAR
    15  ==teste da condicao de retorno bar vazio
    18  ==insere peca branca no BAR
-   21  ==insere peca branca no BAR
-   24  ==insere peca branca no BAR
-   27  ==insere peca preta no BAR
-   30  ==insere peca preta no BAR
-   33  ==pega o num de pecas brancas no BAR
-   36  ==pega o num de pecas pretas no BAR
-   39  ==remove peca branca do BAR
-   42  ==remove peca preta do BAR
-   45  ==pega o num de pecas brancas no BAR
-   48  ==pega o num de pecas pretas no BAR
-   51  ==destroi BAR
+   21  ==insere peca preta no BAR
+   24  ==pega o num de pecas brancas no BAR
+   27  ==pega o num de pecas pretas no BAR
+   30  ==remove peca branca do BAR
+   33  ==remove peca preta do BAR
+   36  ==pega o num de pecas brancas no BAR
+   39  ==pega o num de pecas pretas no BAR
+   42  ==destroi BAR
 
-!!! Número de linhas lidas:          52
-!!! Número de casos de teste:        16
-!!! Número comandos corretos:        16
+!!! Número de linhas lidas:          43
+!!! Número de casos de teste:        13
+!!! Número comandos corretos:        13
 !!! Número de falhas encontradas:     0
 
 !!! Não foram encontrados problemas

@@ -1,0 +1,1 @@
+TRAB3-6.exe /sTestaBAR.script /lTestaBAR.log

@@ -1,0 +1,92 @@
+﻿// Autores:     Caio Melo, Mark Ribeiro, Lucca Almeida
+// Data:      12/05/2019
+
+# Trabalho 3
+
+O objetivo deste segundo trabalho é de implementar os módulos BAR, PFN e Jogo. Cada módulo 
+foi testado separadamente utilizando o Arcabouço de Testes Automatizados. Cada módulo se encontra dentro
+de sua respectiva pasta que contem: seu código fonte (implementação e definição), seu código fonte de 
+teste, um executavel, script de teste e um arquivo .bat para executar o teste. O jogo é uma excecao pois deve ser testado manualmente.
+
+## Execução 
+
+Método 1 (Exclusivo dos modulos separados):
+	i) Navegar pelo prompt de comando(CMD) até a pasta descompactada do .zip
+	ii) Navegar dentro da pasta do módulo que deseja testar
+	iii) Executar o seguinte comando:
+	
+		<Nome do executavel>.exe /s<Nome do script> /l<Nome arquivo log>
+
+Método 2 (Inclui o modulo jogo):
+	i) Descompactar o .zip
+	ii) Navegar pelo Windows Explorer até a pasta do módulo que deseja testar
+	iii) Executar o .bat e abrir o .log gerado para verificar o output
+
+## Exemplo de execução de um modulo sozinho
+
+TRAB3-3.exe /sTesteDadoPontos.script /lTesteDadoPontos.log
+	
+  Output:
+
+
+LES - Laborat¾rio de Engenharia de Software DI/PUC-Rio
+      Arcabouþo de teste de m¾dulos C  (c) 2006
+
+---------------------------------------------
+      Construto sob teste: TRAB3-6.exe
+
+      Arquivo de teste:    TestaBAR.script
+Numero de pecas da cor b no BAR: 0
+Numero de pecas da cor p no BAR: 0
+Numero de pecas da cor b no BAR: 3
+Numero de pecas da cor p no BAR: 2
+Numero de pecas da cor b no BAR: 2
+Numero de pecas da cor p no BAR: 1
+
+
+!!! N·mero de linhas lidas:          43
+!!! N·mero de casos de teste:        13
+!!! N·mero comandos corretos:        13
+!!! N·mero de falhas encontradas:     0
+
+!!! NÒo foram encontrados problemas
+
+  Arquivo log gerado:
+		
+		!!! Inicio dos testes
+!!!      Construto sob teste: TRAB3-6.exe
+!!!      Script de teste:     TestaBAR.script
+
+!!!    0  Linha:     1  // Script:    TestaBAR.script 
+!!!    0  Linha:     2  // Autor:     Caio Melo, Mark Ribeiro, Lucca Almeida 
+!!!    0  Linha:     3  // Data:      02/06/2019 
+!!!    0  Linha:     4  // Propósito: Testar as funcoes do BAR. 
+    6  ==cria BAR
+    9  ==pega o num de pecas brancas no BAR
+   12  ==pega o num de pecas brancas no BAR
+   15  ==teste da condicao de retorno bar vazio
+   18  ==insere peca branca no BAR
+   21  ==insere peca branca no BAR
+   24  ==insere peca branca no BAR
+   27  ==insere peca preta no BAR
+   30  ==insere peca preta no BAR
+   33  ==pega o num de pecas brancas no BAR
+   36  ==pega o num de pecas pretas no BAR
+   39  ==remove peca branca do BAR
+   42  ==remove peca preta do BAR
+   45  ==pega o num de pecas brancas no BAR
+   48  ==pega o num de pecas pretas no BAR
+   51  ==destroi BAR
+
+!!! Número de linhas lidas:          52
+!!! Número de casos de teste:        16
+!!! Número comandos corretos:        16
+!!! Número de falhas encontradas:     0
+
+!!! Não foram encontrados problemas
+
+
+!!! Numero de espacos ainda alocados: 0
+
+
+

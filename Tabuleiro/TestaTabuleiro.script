@@ -51,6 +51,9 @@
 ==mover peca branca da casa 17 para a casa 19
 =mover 17 19 'b' 0
 
+==insere peca branca na casa 1
+=inserir 5 22 'b' 0
+
 ==printa tabuleiro
 =imprimir 0
 
@@ -58,7 +61,10 @@
 =checar 17 'b'
 
 ==checa casa 18
-=checar 24 'b'
+=checar 18 'b'
+
+==checa ultimo quadrante
+=quadrante 'b'
 
 ==destruir tabuleiro
 =destruir

@@ -125,7 +125,7 @@ typedef struct tgPFN
 		   {
 			   return PFN_CondRetFaltouMemoria;
 		   }/*if*/
-		   n++;
+		   i++;
 	   }
 
 	   return PFN_CondRetOK;

@@ -4,7 +4,7 @@
 *  Arquivo gerado:              TESTBAR.C
 *  Letras identificadoras:      TESTBAR
 *
-*  Projeto: Trabaolho 2 Modular
+*  Projeto: Trabalho 3 Modular
 *  Autores: cgm - Caio Graça Melo
 *			mr - Mark Ribeiro
 *			lb - Lucca Buffara
