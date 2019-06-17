@@ -1,20 +1,19 @@
 /***************************************************************************
-*  $MCI Mï¿½dulo de implementaï¿½ï¿½o: Mï¿½dulo Pecas Finalizadas
+*  $MCI Módulo de implementação: Módulo Pecas Finalizadas
 *
-*  Arquivo gerado:              PFN.C
+*  Arquivo gerado:              PecasFinalizadas.C
 *  Letras identificadoras:      PFN
 *
-*  Projeto: Trabaolho 3 Modular
-*  Autores: cgm - Caio Graï¿½a Melo
+*  Projeto: Trabaolho 2 Modular
+*  Autores: cgm - Caio Graça Melo
 *			mr - Mark Ribeiro
 *			lb - Lucca Buffara
 *
-*  $HA Histï¿½rico de evoluï¿½ï¿½o:
-*     Versï¿½o   Autores	  Data		Observaï¿½ï¿½es
-*		 4		cgm		  16/06		Ajustes na funcao de inserir
-*		 3		cgm		  11/06		Criaï¿½ï¿½o de scripts de teste do modulo
-*		 2		cgm		  09/06		Finalizaï¿½ï¿½o do modulo
-*	  	 1		mr		  07/06		Criado o mï¿½dulo
+*  $HA Histórico de evolução:
+*     Versão   Autores	  Data		Observações
+*		 3		cgm		  11/06		Criação de scripts de teste do modulo
+*		 2		cgm		  09/06		Finalização do modulo
+*	  	 1		mr		  07/06		Criado o módulo
 *
 ***************************************************************************/
 #include <stdio.h>
@@ -24,43 +23,44 @@
 
 #include "PECA.H"
 #include "LISTA.H"
-#include "PFN.h"
+#include "PecasFinalizadas.h"
 
 /***********************************************************************
 *
 *  $TC Tipo de dados: Descritor do pecas Finalizadas 
 *
 *
-*  $ED Descriï¿½ï¿½o do tipo
+*  $ED Descrição do tipo
 *     Struct que representa a 'classe' pecas Finalizadas.
 *
 ***********************************************************************/
 
 typedef struct tgPFN
 {
-		 LIS_tppLista pfn ;	/* Ponteiro para a lista de listas de peï¿½a */
+		 LIS_tppLista pfn ;	/* Ponteiro para a lista de listas de peça */
 
 } tpPFN;
 
-/*****  Dados encapsulados no mï¿½dulo  *****/
+/*****  Dados encapsulados no módulo  *****/
 
 		static tpPFN * f = NULL ;
 				/* Ponteiro para o pecasFinalizadas */
 
-/*****  Cï¿½digo das funï¿½ï¿½es exportadas pelo mï¿½dulo  *****/
+/*****  Código das funções exportadas pelo módulo  *****/
 
 /***************************************************************************
 *
-*  Funï¿½ï¿½o: PFN  &CriarPFN
+*  Função: PFN  &CriarPFN
 *  ****/
-	/*Funï¿½ï¿½o auxiliar do CriarPFN*/
+	/*Função auxiliar do CriarPFN*/
    void Excluir(void*ponteiro)
    {
 	   free(ponteiro);
    }
-   /*Fim Funï¿½ï¿½o auxiliar do CriarPFN*/
+   /*Fim Função auxiliar do CriarPFN*/
 
-   PFN_tpCondRet PFN_CriarPFN()
+   PFN_tpCondRet PFN_CriarPFN(
+             void   ( * ExcluirValor ) ( void * pDado ) )
    {
 	  int i;
       f = ( tpPFN*)malloc( sizeof( tpPFN )) ;
@@ -84,20 +84,25 @@ typedef struct tgPFN
 
       return PFN_CondRetOK ;
 
-   } /* Fim funï¿½ï¿½o: PFN  &CriarPFN */
+   } /* Fim função: PFN  &CriarPFN */
 
  /***************************************************************************
 *
-*  Funï¿½ï¿½o: PFN  &Inserir
+*  Função: PFN  &Inserir
 *  ****/
 
-   PFN_tpCondRet PFN_Inserir( char c, int n )
+   PFN_tpCondRet PFN_Inserir( char c )
    {
-	   int i=0;
 	   Peca *p=NULL;
 	   LIS_tppLista listaCorr=NULL;
 	   LIS_tpCondRet auxLis;
 	   PEC_tpCondRet auxPec;
+
+	   auxPec = PEC_CriaPeca( &p, c );
+	   if(auxPec ==PEC_CondRetFaltouMemoria)
+	   {
+		   return PFN_CondRetFaltouMemoria;
+	   }
 
 	   if(c=='b')
 	   {
@@ -110,30 +115,19 @@ typedef struct tgPFN
 	   }
 
 	   listaCorr=(LIS_tppLista)LIS_ObterValor( f->pfn ) ;
-
-	   while(i<n)
+	   auxLis=LIS_InserirElementoApos( listaCorr , p);	
+	   if(auxLis==LIS_CondRetFaltouMemoria)
 	   {
-		   auxPec = PEC_CriaPeca( &p, c );
-		   if(auxPec ==PEC_CondRetFaltouMemoria)
-		   {
-			   return PFN_CondRetFaltouMemoria;
-		   }
-
-		   auxLis=LIS_InserirElementoApos( listaCorr , p);	
-		   if(auxLis==LIS_CondRetFaltouMemoria)
-		   {
-			   return PFN_CondRetFaltouMemoria;
-		   }/*if*/
-		   n++;
-	   }
+		   return PFN_CondRetFaltouMemoria;
+	   }/*if*/
 
 	   return PFN_CondRetOK;
 
-   } /* Fim funï¿½ï¿½o: PFN  &Inserir */
+   } /* Fim função: PFN  &Inserir */
 
  /***************************************************************************
 *
-*  Funï¿½ï¿½o:  PFN  &NPecas
+*  Função:  PFN  &NPecas
 *  ****/
 
    PFN_tpCondRet PFN_NPecas( char c, int *n )
@@ -155,11 +149,11 @@ typedef struct tgPFN
 
 	   return PFN_CondRetOK;
 
-   } /* Fim funï¿½ï¿½o: PFN  &NPecas */
+   } /* Fim função: PFN  &NPecas */
 
    /***************************************************************************
 *
-*  Funï¿½ï¿½o: PFN  &DestruirPFN
+*  Função: PFN  &DestruirPFN
 *  ****/
 
    void PFN_DestruirPFN( void )
@@ -170,4 +164,4 @@ typedef struct tgPFN
        free( f) ;
 	   f=NULL;
 
-   } /* Fim funï¿½ï¿½o: PFN  &DestruirPFN */
+   } /* Fim função: PFN  &DestruirPFN */

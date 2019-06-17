@@ -1,21 +1,21 @@
 /***************************************************************************
-*  $MCI Módulo de implementação: Módulo Tabuleiro
+*  $MCI Mï¿½dulo de implementaï¿½ï¿½o: Mï¿½dulo Tabuleiro
 *
 *  Arquivo gerado:              TABULEIRO.C
 *  Letras identificadoras:      TAB
 *
 *  Projeto: Trabaolho 2 Modular
-*  Autores: cgm - Caio Graça Melo
+*  Autores: cgm - Caio Graï¿½a Melo
 *			mr - Mark Ribeiro
 *			lb - Lucca Buffara
 *
-*  $HA Histórico de evolução:
-*     Versão   Autores	  Data					Observações
+*  $HA Histï¿½rico de evoluï¿½ï¿½o:
+*     Versï¿½o   Autores	  Data					Observaï¿½ï¿½es
 *		 4		cgm			16/06				Ajustes na funcao de inserir
 *		 4		cgm			13/05				Ajustes finais
-*		 3		cgm			11/05				Correção de bugs
-*		 2		cgm			04/05				Revisão de algumas funções criadas
-*	  	 1		cgm			03/05				Criado o módulo
+*		 3		cgm			11/05				Correï¿½ï¿½o de bugs
+*		 2		cgm			04/05				Revisï¿½o de algumas funï¿½ï¿½es criadas
+*	  	 1		cgm			03/05				Criado o mï¿½dulo
 *
 ***************************************************************************/
 #include <stdio.h>
@@ -32,37 +32,36 @@
 *  $TC Tipo de dados: Descritor do pecas capturadas 
 *
 *
-*  $ED Descrição do tipo
+*  $ED Descriï¿½ï¿½o do tipo
 *     Struct que representa a 'classe' pecas capturadas.
 *
 ***********************************************************************/
 
 typedef struct tgBAR
 {
-		 LIS_tppLista bar ;	/* Ponteiro para a lista de listas de peça */
+		 LIS_tppLista bar ;	/* Ponteiro para a lista de listas de peï¿½a */
 
 } tpBar;
 
-/*****  Dados encapsulados no módulo  *****/
+/*****  Dados encapsulados no mï¿½dulo  *****/
 
 		static tpBar * b = NULL ;
 				/* Ponteiro para o BAR */
 
-/*****  Código das funções exportadas pelo módulo  *****/
+/*****  Cï¿½digo das funï¿½ï¿½es exportadas pelo mï¿½dulo  *****/
 
 /***************************************************************************
 *
-*  Função: TAB  &Criar Tabuleiro
+*  Funï¿½ï¿½o: TAB  &Criar Tabuleiro
 *  ****/
-	/*Função auxiliar do Criar BAR*/
+	/*Funï¿½ï¿½o auxiliar do Criar BAR*/
    void ExcluirBAR(void*ponteiro)
    {
 	   free(ponteiro);
    }
-   /*Fim Função auxiliar do Criar BAR*/
+   /*Fim Funï¿½ï¿½o auxiliar do Criar BAR*/
 
-   BAR_tpCondRet BAR_CriarBAR(
-             void   ( * ExcluirValor ) ( void * pDado ) )
+   BAR_tpCondRet BAR_CriarBAR()
    {
 	  int i;
       b = ( tpBar*)malloc( sizeof( tpBar )) ;
@@ -86,11 +85,11 @@ typedef struct tgBAR
 
       return BAR_CondRetOK ;
 
-   } /* Fim função: TAB  &Criar BAR */
+   } /* Fim funï¿½ï¿½o: TAB  &Criar BAR */
 
    /***************************************************************************
 *
-*  Função: TAB  &Destruir BAR
+*  Funï¿½ï¿½o: TAB  &Destruir BAR
 *  ****/
 
    void BAR_DestruirBAR( void )
@@ -101,11 +100,11 @@ typedef struct tgBAR
        free( b) ;
 	   b=NULL;
 
-   } /* Fim função: TAB  &Destruir BAR */
+   } /* Fim funï¿½ï¿½o: TAB  &Destruir BAR */
 
  /***************************************************************************
 *
-*  Função: TAB  &Inserir BAR
+*  Funï¿½ï¿½o: TAB  &Inserir BAR
 *  ****/
 
    BAR_tpCondRet BAR_Inserir( char c, int n )
@@ -146,11 +145,11 @@ typedef struct tgBAR
 
 	   return BAR_CondRetOK;
 
-   } /* Fim função: TAB  &Inserir BAR */
+   } /* Fim funï¿½ï¿½o: TAB  &Inserir BAR */
 
     /***************************************************************************
 *
-*  Função: TAB  &Excluir BAR
+*  Funï¿½ï¿½o: TAB  &Excluir BAR
 *  ****/
 
    BAR_tpCondRet BAR_Excluir( char c )
@@ -177,11 +176,11 @@ typedef struct tgBAR
 
 	   return BAR_CondRetOK;
 
-   } /* Fim função: TAB  &Excluir BAR 
+   } /* Fim funï¿½ï¿½o: TAB  &Excluir BAR 
 
 	 /***************************************************************************
 *
-*  Função: TAB  &NPecas BAR
+*  Funï¿½ï¿½o: TAB  &NPecas BAR
 *  ****/
 
    BAR_tpCondRet BAR_NPecas( char c, int *n )
@@ -203,4 +202,4 @@ typedef struct tgBAR
 
 	   return BAR_CondRetOK;
 
-   } /* Fim função: TAB  &NPecas BAR */
+   } /* Fim funï¿½ï¿½o: TAB  &NPecas BAR */

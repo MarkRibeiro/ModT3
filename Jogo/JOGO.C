@@ -20,7 +20,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-//#include <unistd.h>
+#include <unistd.h>
 
 #include "DADO.H"
 #include "PECA.H"
@@ -31,7 +31,6 @@
 #include "PFN.h"
 
 #define bufSize 22
-
 
 void Salva_Jogo(char jogadorVez)
 {
@@ -71,28 +70,57 @@ void Salva_Jogo(char jogadorVez)
 	fclose(fptr);
 }
 
-//Calcula Permutacoes
-void retorna_movimentos(int *dado, int *movimentos, int casa_atual, char cor)
-{
-	if(cor == 'p')
-	{
-		movimentos[0] = casa_atual - dado[0];
-		if(dado[3] == NULL)
-			movimentos[1] = casa_atual - dado[1];
-	}
+void RecarregaJogo(FILE * fptr){
+	int i,n;
+	BAR_tpCondRet auxBAR;
+	char cor;
+	char buf[bufSize];
+    TAB_CriarTabuleiro();
+	BAR_CriarBAR();
+	PFN_CriarPFN();
+    DP_criaDadosPontos();
 
-	if(cor == 'b')
+	for(i=1;i<25;i++)
 	{
-		movimentos[0] = casa_atual + dado[0];
-		if(dado[3] == NULL)
-			movimentos[1] = casa_atual + dado[1];
+		fgets(buf, sizeof(buf), fptr);
+		n = atoi(&buf[0]);
+		cor = buf[1];
+		if(n!=0)
+		{
+			TAB_InserirPecasCasa(n,cor,i);
+		}
 	}
+	fgets(buf, sizeof(buf), fptr);
+	n = atoi(&buf[0]);
+	auxBAR=BAR_Inserir('b',n);
+
+	fgets(buf, sizeof(buf), fptr);
+	n = atoi(&buf[0]);
+	BAR_Inserir('p',n);
+
+	fgets(buf, sizeof(buf), fptr);
+	n = atoi(&buf[0]);
+	PFN_Inserir('b',n);
+
+	fgets(buf, sizeof(buf), fptr);
+	n = atoi(&buf[0]);
+	PFN_Inserir('p',n);
+
+
+	TAB_PrintTabuleiro();
+	BAR_NPecas('b',&n);
+	BAR_NPecas('p',&n);
+	PFN_NPecas('b',&n);
+	PFN_NPecas('P',&n);
 }
+
+//-------------------------------------------------------
+//GUIs e utilitarios
 
 //Limpa a tela
 void clrscr()
 {
-    system("cls");
+    system("clear");
 }
 
 //Pause e espera uma tecla ser pressionada
@@ -163,6 +191,7 @@ void mostraDado(int val){
     
 }
 
+
 void visInicial(void){
     /*printf(R"EOF(
     ____                        __  ___          __      __              ___________
@@ -216,57 +245,73 @@ void printBanner(char *c){
     }
 }
 
+void retorna_movimentos(int *dado, int *movimentos, int casaAtual, char cor, int inseri_peca_capturada)
+{
+    int i;
+
+    if(inseri_peca_capturada){
+        if(cor = 'b'){
+            casaAtual = 12; 
+        }else{
+            casaAtual = 13;
+        }
+    }
+    
+	if(cor == 'p')
+	{
+		movimentos[0] = casaAtual - dado[0];
+		if(dado[3] == 0)
+			movimentos[1] = casaAtual - dado[1];
+            movimentos[2] = -100;
+            movimentos[3] = -100;
+	}
+
+	if(cor == 'b')
+	{
+		movimentos[0] = casaAtual + dado[0];
+		if(dado[3] == 0)
+			movimentos[1] = casaAtual + dado[1];
+            movimentos[2] = -100;
+            movimentos[3] = -100;
+	}
+}
+
+void tiraDado(int *dado, int dadoUsado)
+{
+	switch (dadoUsado)
+	{
+		case 0:
+			dado[0] = dado[1]; 
+			dado[1] = dado[2];
+			dado[2] = dado[3];
+			dado[3] = 0;
+			return ;
+
+		case 1:
+			dado[1] = dado[2];
+			dado[2] = dado[3];
+			dado[3] = 0;
+			return ;
+
+		case 2:
+			dado[2] = dado[3];
+			dado[3] = 0;
+			return ;
+
+		case 3:
+			dado[3] = 0;
+			return ; 
+
+	}
+	
+}
+
 //Funcao que incializa/reinicializa todas as estruturas de dados dependentes de cada partida
 void initPartida(void){
     TAB_CriarTabuleiro();
     TAB_ArrumarTabuleiro();
-	BAR_CriarBAR();
-	PFN_CriarPFN();
-    DP_criaDadosPontos();
-}
-
-void RecarregaJogo(FILE * fptr){
-	int i,n;
-	BAR_tpCondRet auxBAR;
-	char cor;
-	char buf[bufSize];
-    TAB_CriarTabuleiro();
-	BAR_CriarBAR();
-	PFN_CriarPFN();
-    DP_criaDadosPontos();
-
-	for(i=1;i<25;i++)
-	{
-		fgets(buf, sizeof(buf), fptr);
-		n = atoi(&buf[0]);
-		cor = buf[1];
-		if(n!=0)
-		{
-			TAB_InserirPecasCasa(n,cor,i);
-		}
-	}
-	fgets(buf, sizeof(buf), fptr);
-	n = atoi(&buf[0]);
-	auxBAR=BAR_Inserir('b',n);
-
-	fgets(buf, sizeof(buf), fptr);
-	n = atoi(&buf[0]);
-	BAR_Inserir('p',n);
-
-	fgets(buf, sizeof(buf), fptr);
-	n = atoi(&buf[0]);
-	PFN_Inserir('b',n);
-
-	fgets(buf, sizeof(buf), fptr);
-	n = atoi(&buf[0]);
-	PFN_Inserir('p',n);
-
-
-	TAB_PrintTabuleiro();
-	BAR_NPecas('b',&n);
-	BAR_NPecas('p',&n);
-	PFN_NPecas('b',&n);
-	PFN_NPecas('P',&n);
+    BAR_CriarBAR();
+    PFN_CriarPFN();
 }
 
 char lanceInicial(int *dados){
@@ -349,28 +394,32 @@ void mostraLanceDados(int *dados, char *c){
 
 }
 
+//Calcula e acrescenta pontos
+void calculaPontos(){
+    return;
+}
+
 //Por em quanto apenas uma partida...
 int main(void){
-	FILE* fptr;
+
     TAB_tpCondRet tp_CondRet;
+    FILE* fptr;
     int casaIni, casaDest, movimentosTotais, dadosPontos;
-    char cor, decisao;
-    int aux;
+    char cor, char_aux;
+    char ultimo_a_dobrar = 'f'; //Init qualquer coisa diferente de p ou b
+    int aux, i, inseri_peca_capturada, pode_finalizar, decisao;
 
     // int movimento[4] = {NULL, NULL, NULL, NULL};
 
     int dados[4] = {0,0,0,0};
+    int movimentos[4] = {0, 0, 0, 0};
     
     DP_criaDadosPontos(); // Inicializa DadosPontos para todas as partidas
-    DP_lerPontos('p', &aux);
-    printf("pontos p: %d\n", aux);
 
     visInicial();
     pausa("\t\t\t [Pressione qualquer tecla para iniciar]");
     clrscr();
 
-    //Decidir qual cor joga primeiro:
-    cor = lanceInicial(&dados);
 	while(1)
 	{
 		printf("i - Iniciar uma nova partida\nc - Carregar partida em andamento\nEscolha sua acao: ");
@@ -399,69 +448,181 @@ int main(void){
 		}
 		clrscr();
 	}
-	clrscr();
+
+    getchar();
+    //Decidir qual cor joga primeiro:
+    cor = lanceInicial(&dados);
+    pausa("Inicializando a partida! [Pressione qualquer tecla]");
+    clrscr();
+
     //Main game loop
-    while(1){       
+    while(1){
+
+        printf("s - Salvar o jogo\nqualquer outra tecla - Fazer sua jogada\nEscolha sua acao: ");
+        scanf("%c", &decisao);
+        if(decisao=='s')
+        {
+            Salva_Jogo(cor);
+        }
+
+        PFN_NPecas(cor, &aux);
+
+        if(aux == 15){
+            if(cor == 'p'){
+                clrscr();
+                printf("Pretas venceram essa partida!\n");
+            }else{
+                clrscr();
+                printf("Pretas venceram essa partida!\n");
+            }
+            calculaPontos();
+            break;
+        }
+
+        printBanner(&cor);
+        
+        DP_lerUltimoJogador(&ultimo_a_dobrar);
+
+        if(ultimo_a_dobrar != cor){
+            DP_lerValorDadosPontos(&aux);
+            printf("Valor do dados pontos: %d\n", aux);
+
+            printf("Deseja dobrar os pontos? [S/n]: ");
+            scanf("%c", &char_aux);
+            getchar(); //Dummy
+        }
+
+        if(char_aux == 'S'){
+            DP_dobraValor(cor);
+            DP_lerValorDadosPontos(&aux);
+            printf("Pontuação dobrada! Agora a partida esta valendo: %d\n", aux);
+        } 
+
+        printf("Pontuação atual do jogo: \n");
+        DP_lerPontos('p', &aux);
+        printf("Pretas: %d\n", aux);
+        DP_lerPontos('b', &aux);
+        printf("Brancas: %d\n", aux);
+
+        pausa("[Pressione qualquer tecla]");
     
         //Lancamento dos dados
         DAD_JogaDados(&dados);
 
-        mostraLanceDados(&dados, &cor);
-
-        movimentosTotais = dados[0] + dados[1];
-
-        //Dobra dos dados
-        if(dados[0]==dados[1]){
-            movimentosTotais *= 2;
-        }
-
-		printf("s - Salvar o jogo\nqualquer outra tecla - Fazer sua jogada\nEscolha sua acao: ");
-		scanf("%c", &decisao);
-		if(decisao=='s')
-		{
-			Salva_Jogo(cor);
-		}
-
         clrscr();
 
         //Movimentacao das pecas
-        while(movimentosTotais != 0){  
-
+        while(1){
             printBanner(&cor);
+        
+            inseri_peca_capturada = 0;
+            pode_finalizar = 0;
+
+            if(TAB_ChecaQuadrante(cor)){
+                printf("***Voce ja pode finalizar suas pecas!***\n");
+                pode_finalizar = 1;
+            }
+
             mostraLanceDados(&dados, &cor);
             TAB_PrintTabuleiro();
-            printf("Escolha qual casa deseja mover: ");
-            scanf("%d", &casaIni);
-            
-            // retorna_movimentos(int *dado, int *movimentos, int casa_atual, cor);
-            
-            printf("Escolha a casa destino: ");
-            scanf("%d", &casaDest);
-            getchar(); //Dummy getchar
 
-            //Verifica se movimento foi validado pelo modulo tabuleiro
-            //E nao permite que movimentos totais seja negativo
-            if(cor=='p' && (casaIni - casaDest) <= movimentosTotais){
-                if(TAB_MoverPeca(casaIni, casaDest, cor) == 0){
-                    movimentosTotais = movimentosTotais - (casaIni - casaDest);
-                }else{  
-                    pausa("Movimento invalido!\n");
+            BAR_NPecas('p', &aux);
+            printf("Peças pretas capturadas: %d\n", aux);
+
+            BAR_NPecas('b', &aux);
+            printf("Peças brancas capturadas: %d\n\n", aux);
+
+            PFN_NPecas('p', &aux);
+            printf("Peças pretas finalizadas: %d\n", aux);
+
+            PFN_NPecas('b', &aux);
+            printf("Peças brancas finalizadas: %d\n\n", aux);
+
+            BAR_NPecas(cor, &aux);
+            if(aux > 0){
+                inseri_peca_capturada = 1;
+            }
+
+            while(1){
+
+                if(inseri_peca_capturada){
+                    printf("Voce deve inserir a peca capturada!\n");
+                    casaIni = 0; //Qualquer valor
+                    break;
                 }
-            
-            }else if(cor=='b' && (casaDest - casaIni) <= movimentosTotais ){
 
-                if(TAB_MoverPeca(casaIni, casaDest, cor) == 0){
-                    movimentosTotais = movimentosTotais - (casaDest - casaIni);
+                printf("Escolha qual casa deseja mover: ");
+                scanf("%d", &casaIni);
+
+                if(casaIni > 24 || casaIni < 1){
+                    printf("Casa invalida!\n");
+                    continue;
+                }
+
+                if(TAB_ChecaCasa(casaIni, cor) == 0){
+                    break;
+                }
+                printf("Voce nao pode mexer a peca nessa casa!\n");
+            }
+
+            retorna_movimentos(dados, movimentos, casaIni, cor , inseri_peca_capturada);
+
+            for(i = 0; i < 4; i++){
+                
+                if((movimentos[i] > 24 || movimentos[i] < 1) && movimentos[i] > -100 && pode_finalizar){
+                    printf("Finalizar peca usando dado [%d]\n",i);
+                    printf("%d\n", movimentos[i]);
+                    continue;
+                }else if((movimentos[i] > 24 || movimentos[i] < 1 ) && movimentos[i] > -100){
+                    continue;
+                }
+
+                if(movimentos[i] == -100){movimentos[i] = 0;}
+
+                if(movimentos[i] != 0 && movimentos[i] != casaIni && (TAB_ChecaCasa(movimentos[i], cor) == 0 || TAB_ChecaCasa(movimentos[i], cor) == 1)){
+                    printf("Usando dado [%d] :%d -> %d\n",i, casaIni, movimentos[i]);
+                }
+            }
+            
+            while(1){
+                printf("Escolha qual dado deseja usar [-1 para cancelar]: ");
+                scanf("%d", &aux);
+                if((aux>=0 && aux<=3) || aux == -1){ //Dumb check
+                    break;
+                }
+                printf("Escolha o numero do dado!\n");
+            }
+
+            if(aux != -1){
+                casaDest = movimentos[aux];
+                getchar(); //Dummy getchar
+
+                if(TAB_ChecaCasa(casaDest, cor) == 1){
+                    TAB_RemoverPeca(casaDest); // "Come a Peca e bota na BAR"
+                    if(cor == 'p'){
+                        BAR_Inserir('b', 1);
+                    }else{
+                        BAR_Inserir('p', 1);
+                    }
+                }
+
+                if(inseri_peca_capturada){
+                    TAB_InserirPecasCasa(1, cor, casaDest);
+                    BAR_Excluir(cor);
                 }else{
-                    pausa("Movimento invalido!\n");
+                    TAB_MoverPeca(casaIni, casaDest, cor);
                 }
-        
-            }else{
-                pausa("Movimento invalido!\n");
-            }
-            clrscr();
 
+                tiraDado(&dados, aux);
+                }
+
+            if(dados[0] == 0 && dados[1] == 0 && dados[2] == 0 && dados[3] == 0){
+                TAB_PrintTabuleiro();
+                pausa("[Pressione qualquer tecla]");
+                clrscr();
+                break;
             }
+        }
 
         //Troca vez do jogador 
         if(cor=='p'){
@@ -472,3 +633,5 @@ int main(void){
 
     }
 }
+
+
