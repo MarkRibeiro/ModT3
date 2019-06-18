@@ -1,1 +1,1 @@
-TRAB3-2.exe /sPEC.script /lPEC.log
+TRAB2-2.exe /sPEC.script /lPEC.log
