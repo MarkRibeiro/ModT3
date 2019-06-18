@@ -3,46 +3,21 @@
 !!!      Construto sob teste: TRAB3-3.exe
 !!!      Script de teste:     TesteDadoPontos.script
 
-    1  == Verifica todas funcoes sem criar dado pontos
-    9  == Cria DadoPontos e id de jogador errado Ã© passado
-   13  == Cria DadoPontos e jogador 1 tenta dobrar 2 vezes seguidas
->>>    1  Linha:    15  Retorno errado ao dobrar dados pontos. Deveria ser: 0  É: 2
->>>    2  Linha:    16  Não é comando recuperar:  =dobra 1 3
-   18  == Cria DadoPontos e dobra e dado ate atingir valor maximo 64
->>>    3  Linha:    20  Retorno errado ao dobrar dados pontos. Deveria ser: 0  É: 2
->>>    4  Linha:    21  Não é comando recuperar:  =dobra 2 0
->>>    5  Linha:    22  Comando de teste ignorado:  =dobra 1 0
->>>    6  Linha:    23  Comando de teste ignorado:  =dobra 2 0
->>>    7  Linha:    24  Comando de teste ignorado:  =dobra 1 0
->>>    8  Linha:    25  Comando de teste ignorado:  =dobra 2 0
->>>    9  Linha:    26  Comando de teste ignorado:  =dobra 1 4
-   28  == Tenta ler pontuacao de jogador invalido
-   32  == Tenta modificar pontuacao de jogador invalido
-   36  == Modifica pontuacao do jogador 1 para 50 e depois le
->>>   10  Linha:    38  Retorno errado ao modificar pontos. Deveria ser: 0  É: 2
->>>   11  Linha:    39  Não é comando recuperar:  =lerPontos 1 50 0
-   41  == Dobra pontuacao ate 32 e depois le valor do DadoPontos
->>>   12  Linha:    43  Retorno errado ao dobrar dados pontos. Deveria ser: 0  É: 2
->>>   13  Linha:    44  Não é comando recuperar:  =dobra 2 0
->>>   14  Linha:    45  Comando de teste ignorado:  =dobra 1 0
->>>   15  Linha:    46  Comando de teste ignorado:  =dobra 2 0
->>>   16  Linha:    47  Comando de teste ignorado:  =dobra 1 0
->>>   17  Linha:    48  Comando de teste ignorado:  =lerDP 32 0
-   51  == Dobra pontuacao ate 32 e depois le ultimo jogador a dobrar
->>>   18  Linha:    53  Retorno errado ao dobrar dados pontos. Deveria ser: 0  É: 2
->>>   19  Linha:    54  Não é comando recuperar:  =dobra 2 0
->>>   20  Linha:    55  Comando de teste ignorado:  =dobra 1 0
->>>   21  Linha:    56  Comando de teste ignorado:  =dobra 2 0
->>>   22  Linha:    57  Comando de teste ignorado:  =dobra 1 0
->>>   23  Linha:    58  Comando de teste ignorado:  =dobra 2 0
->>>   24  Linha:    59  Comando de teste ignorado:  =lerUltimoJogador 2 0
+    1  == Verifica todas funcoes sem criar dado 'p'ontos
+   10  == Cria DadoPontos e jogador 1 tenta dobrar 2 vezes seguidas
+   15  == Cria DadoPontos e dobra e dado ate atingir valor maximo 64
+   25  == Tenta ler pontuacao de jogador invalido
+   29  == Tenta modificar pontuacao de jogador invalido
+   33  == Modifica pontuacao do jogador 1 para 50 e depois le
+   38  == Dobra pontuacao ate 32 e depois le valor do DadoPontos
+   48  == Dobra pontuacao ate 32 e depois le ultimo jogador a dobrar
 
-!!! Número de linhas lidas:          59
-!!! Número de casos de teste:         9
-!!! Número comandos corretos:        17
-!!! Número de falhas encontradas:    24
+!!! Número de linhas lidas:          56
+!!! Número de casos de teste:         8
+!!! Número comandos corretos:        39
+!!! Número de falhas encontradas:     0
 
-!!! Foram encontrados problemas
+!!! Não foram encontrados problemas
 
 
 !!! Numero de espacos ainda alocados: 0
