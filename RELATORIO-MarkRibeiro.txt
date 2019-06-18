@@ -1,0 +1,16 @@
+﻿RELATÓRIO INDIVIDUAL TRABALHO 3 DE MODULAR
+- Mark Ribeiro
+Data	Horas Trabalhadas	    Tipo Tarefa								Descrição da Tarefa Realizada
+--------------------------------------------------------------------------------------------------------------------------------------------
+10/6/2019	3hrs		    Desenvolvimento Peças Finalizadas				Programacao do modulo Peças Finalizadas
+--------------------------------------------------------------------------------------------------------------------------------------------
+15/6/2019	1h		    Script de Teste Manual					Criação do script de teste manual do gamão
+--------------------------------------------------------------------------------------------------------------------------------------------
+15/6/2019	2h		    Especificação de Requisitos				 	Atualização das Especificaçoes de Requisitos
+													para o contexto do trabalho3
+--------------------------------------------------------------------------------------------------------------------------------------------
+17/6/2019	1h		    Manual do Usuario				 			Criação do manual do usuario												para o contexto do trabalho3
+--------------------------------------------------------------------------------------------------------------------------------------------
+17/6/2019	10min		    Assertivas de Entrada/Saida				 	Assertivas de entrada e saida de peça e dados
+--------------------------------------------------------------------------------------------------------------------------------------------
+
