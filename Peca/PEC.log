@@ -1,20 +1,22 @@
 
 !!! Inicio dos testes
-!!!      Construto sob teste: TRAB2-2.exe
+!!!      Construto sob teste: TRAB3-2.exe
 !!!      Script de teste:     PEC.script
 
     1  ==testa criapeca com sucesso
     4  ==testa obterpeca com sucesso
     7  ==testa obterpeca com peça não existente
+>>>    1  Linha:     8  Retorno errado ao criar peca. Deveria ser: 1  É: 2
    10  ==testa obterpeca com peça já existente
+>>>    2  Linha:    12  Retorno errado ao obter cor. Deveria ser: 3  É: 4
    14  ==testa destruirpeca com peça existente
 
 !!! Número de linhas lidas:          15
 !!! Número de casos de teste:         5
-!!! Número comandos corretos:         6
-!!! Número de falhas encontradas:     0
+!!! Número comandos corretos:         4
+!!! Número de falhas encontradas:     2
 
-!!! Não foram encontrados problemas
+!!! Foram encontrados problemas
 
 
 !!! Numero de espacos ainda alocados: 0

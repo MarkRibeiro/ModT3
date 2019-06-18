@@ -45,7 +45,7 @@
 #include	"TABULEIRO.h"
 #include	"PECA.H"
 #include	"BAR.h"
-#include	"PecasFinalizadas.h"
+#include	"PFN.h"
 
 /* Tabela dos nomes dos comandos de teste específicos */
 

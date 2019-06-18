@@ -40,7 +40,7 @@
 #include    "generico.h"
 #include    "lerparm.h"
 
-#include    "DadosPontos.h"
+#include    "DadoPontos.h"
 
 /* Tabela dos nomes dos comandos de teste específicos */
 

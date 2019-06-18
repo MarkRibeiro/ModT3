@@ -1,1 +1,1 @@
-TRAB2-7.exe /sTestaTabuleiro.script /lTestaTabuleiro.log
+TRAB3-7.exe /sTestaTabuleiro.script /lTestaTabuleiro.log

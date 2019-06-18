@@ -4,9 +4,9 @@ LES - Laboratório de Engenharia de Software DI/PUC-Rio
       Arcabouço de teste de módulos C  (c) 2006
 
 ---------------------------------------------
-      Construto sob teste: PecasFinalizadas
+      Construto sob teste: TRAB3-7.exe
 
-      Arquivo de teste:    PecasFinalizadas.script
+      Arquivo de teste:    PFN.script
 
 
 !!!    0  Linha:     1  // Script:    TestaPFN.script 
@@ -19,23 +19,20 @@ LES - Laboratório de Engenharia de Software DI/PUC-Rio
    12  ==pega o num de pecas brancas no PFNNumero de pecas da cor p no PFN: 0
 
    15  ==insere peca branca no PFN
-   18  ==insere peca branca no PFN
-   21  ==insere peca branca no PFN
-   24  ==insere peca preta no PFN
-   27  ==insere peca preta no PFN
-   30  ==pega o num de pecas brancas no PFNNumero de pecas da cor b no PFN: 3
+   18  ==insere peca preta no PFN
+   21  ==pega o num de pecas brancas no PFNNumero de pecas da cor b no PFN: 3
 
-   33  ==pega o num de pecas pretas no PFNNumero de pecas da cor p no PFN: 2
+   24  ==pega o num de pecas pretas no PFNNumero de pecas da cor p no PFN: 2
 
-   36  ==pega o num de pecas brancas no PFNNumero de pecas da cor b no PFN: 3
+   27  ==pega o num de pecas brancas no PFNNumero de pecas da cor b no PFN: 3
 
-   39  ==pega o num de pecas pretas no PFNNumero de pecas da cor p no PFN: 2
+   30  ==pega o num de pecas pretas no PFNNumero de pecas da cor p no PFN: 2
 
-   42  ==destroi PFN
+   33  ==destroi PFN
 
-!!! Número de linhas lidas:          43
-!!! Número de casos de teste:        13
-!!! Número comandos corretos:        13
+!!! Número de linhas lidas:          34
+!!! Número de casos de teste:        10
+!!! Número comandos corretos:        10
 !!! Número de falhas encontradas:     0
 
 !!! Não foram encontrados problemas
