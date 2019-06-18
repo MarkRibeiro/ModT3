@@ -21,7 +21,7 @@
 *  $EIU Interface com o usuário pessoa
 *     Comandos de teste específicos para testar o módulo árvore:
 *
-*    "=criarpeca" - PEC_CriaPeca(<Peca>, <char>)          
+*     "=criarpeca" - PEC_CriaPeca(<Peca>, <char>)          
 *	  "=obterpeca" - PEC_ObterCorPeca(<Peca>, <char>)         
 *	  "=destruirpeca" - PEC_DestroiPeca(<Peca>)
 *
