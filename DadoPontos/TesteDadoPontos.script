@@ -1,59 +1,56 @@
-== Verifica todas funcoes sem criar dado pontos
-=dobra 1 1
-=modPontos 1 1000 1
-=lerPontos 1 0 1
+== Verifica todas funcoes sem criar dado 'p'ontos
+=dobra 'p' 1
+=modPontos 1 'b' 1
+=lerPontos 'p' 0 1
 =lerDP 0 1
-=lerUltimoJogador 0 1
+=lerUltimoJogador 'p' 1
 =destruir 1
 
-== Cria DadoPontos e id de jogador errado é passado
-=criar 0
-=dobra 4 2
 
 == Cria DadoPontos e jogador 1 tenta dobrar 2 vezes seguidas
 =criar 0
-=dobra 1 0
-=dobra 1 3
+=dobra 'p' 0
+=dobra 'p' 3
 
 == Cria DadoPontos e dobra e dado ate atingir valor maximo 64
 =criar 0
-=dobra 1 0
-=dobra 2 0
-=dobra 1 0
-=dobra 2 0
-=dobra 1 0
-=dobra 2 0
-=dobra 1 4
+=dobra 'p' 0
+=dobra 'b' 0
+=dobra 'p' 0
+=dobra 'b' 0
+=dobra 'p' 0
+=dobra 'b' 0
+=dobra 'p' 4
 
 == Tenta ler pontuacao de jogador invalido
 =criar 0
-=lerPontos 4 0 2
+=lerPontos 'j' 0 2
 
 == Tenta modificar pontuacao de jogador invalido
 =criar 0
-=modPontos 4 0 2
+=modPontos 0 'l' 2
 
 == Modifica pontuacao do jogador 1 para 50 e depois le
 =criar 0
-=modPontos 50 1 0
-=lerPontos 1 50 0
+=modPontos 50 'p' 0
+=lerPontos 'p' 50 0
 
 == Dobra pontuacao ate 32 e depois le valor do DadoPontos
 =criar 0
-=dobra 1 0
-=dobra 2 0
-=dobra 1 0
-=dobra 2 0
-=dobra 1 0
+=dobra 'p' 0
+=dobra 'b' 0
+=dobra 'p' 0
+=dobra 'b' 0
+=dobra 'p' 0
 =lerDP 32 0
 
 
 == Dobra pontuacao ate 32 e depois le ultimo jogador a dobrar
 =criar 0
-=dobra 1 0
-=dobra 2 0
-=dobra 1 0
-=dobra 2 0
-=dobra 1 0
-=dobra 2 0
-=lerUltimoJogador 2 0
+=dobra 'p' 0
+=dobra 'b' 0
+=dobra 'p' 0
+=dobra 'b' 0
+=dobra 'p' 0
+=dobra 'b' 0
+=lerUltimoJogador 'b' 0

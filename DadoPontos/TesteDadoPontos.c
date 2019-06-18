@@ -53,173 +53,175 @@
 #define     DESTROI_DP			"=destruir"
 
 
-   TST_tpCondRet TST_EfetuarComando( char * ComandoTeste )
-   {
+TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
+{
 
-	   DP_tpCondRet CondRetObtido   = DP_CondRetOk;
-	   DP_tpCondRet CondRetEsperada = DP_CondRetFaltouMemoria;
+	DP_tpCondRet CondRetObtido = DP_CondRetOk;
+	DP_tpCondRet CondRetEsperada = DP_CondRetFaltouMemoria;
 
-      int ValorEsperado = 0 ;
-      int ValorObtido   = 0  ;
-      int ValorDado     = 0 ;
-	  int ValorDado_2 = 0;
+	int ValorEsperado = 0;
+	int ValorObtido = 0;
+	int ValorDado = 0;
+	int ValorDado_2 = 0;
 
-      int  NumLidos = -1 ;
+	char jogador = 'a';
 
-      TST_tpCondRet Ret ;
+	int  NumLidos = -1;
 
-      /* Testar Criar DadosPontos */
+	TST_tpCondRet Ret;
 
-         if ( strcmp( ComandoTeste , CRIAR_DP) == 0 )
-         {
+	/* Testar Criar DadosPontos */
 
-            NumLidos = LER_LerParametros( "i" ,
-                               &CondRetEsperada ) ;
-            if ( NumLidos != 1 )
-            {
-               return TST_CondRetParm ;
-            }
+	if (strcmp(ComandoTeste, CRIAR_DP) == 0)
+	{
 
-            CondRetObtido = DP_criaDadosPontos( ) ;
+		NumLidos = LER_LerParametros("i",
+			&CondRetEsperada);
+		if (NumLidos != 1)
+		{
+			return TST_CondRetParm;
+		}
 
-            return TST_CompararInt( CondRetEsperada , CondRetObtido ,
-                                    "Retorno errado ao criar DadosPontos." );
+		CondRetObtido = DP_criaDadosPontos();
 
-         }
+		return TST_CompararInt(CondRetEsperada, CondRetObtido,
+			"Retorno errado ao criar DadosPontos.");
 
-      /* Testar DP dobrar valor dado */
+	}
 
-         else if ( strcmp( ComandoTeste , DOBRA) == 0 )
-         {
+	/* Testar DP dobrar valor dado */
 
-            NumLidos = LER_LerParametros( "ii" ,
-                               &ValorDado , &CondRetEsperada ) ;
-            if ( NumLidos != 2 )
-            {
-               return TST_CondRetParm ;
-            }
+	else if (strcmp(ComandoTeste, DOBRA) == 0)
+	{
 
-            CondRetObtido = DP_dobraValor( ValorDado ) ;
+		NumLidos = LER_LerParametros("ci",
+			&jogador, &CondRetEsperada);
+		if (NumLidos != 2)
+		{
+			return TST_CondRetParm;
+		}
 
-            return TST_CompararInt( CondRetEsperada , CondRetObtido ,
-                                    "Retorno errado ao dobrar dados pontos." );
+		CondRetObtido = DP_dobraValor(jogador);
 
-         }
+		return TST_CompararInt(CondRetEsperada, CondRetObtido,
+			"Retorno errado ao dobrar dados pontos.");
 
-      /* Testar DP modificar pontos */
+	}
 
-         else if ( strcmp( ComandoTeste , MOD_PONTOS) == 0 )
-         {
+	/* Testar DP modificar pontos */
 
-            NumLidos = LER_LerParametros( "iii" ,
-                               &ValorDado, &ValorDado_2 , &CondRetEsperada ) ;
-            if ( NumLidos != 3 )
-            {
-               return TST_CondRetParm ;
-            }
+	else if (strcmp(ComandoTeste, MOD_PONTOS) == 0)
+	{
 
-            CondRetObtido = DP_modificaPontos( ValorDado, ValorDado_2 ) ;
+		NumLidos = LER_LerParametros("ici",
+			&ValorDado, &jogador, &CondRetEsperada);
+		if (NumLidos != 3)
+		{
+			return TST_CondRetParm;
+		}
 
-            return TST_CompararInt( CondRetEsperada , CondRetObtido ,
-                                    "Retorno errado ao modificar pontos." );
+		CondRetObtido = DP_modificaPontos(ValorDado, jogador);
 
-         } 
+		return TST_CompararInt(CondRetEsperada, CondRetObtido,
+			"Retorno errado ao modificar pontos.");
 
-      /* Testar ler pontuacao */
+	}
 
-         else if ( strcmp( ComandoTeste , LER_PONTOS) == 0 )
-         {
-			 NumLidos = LER_LerParametros("iii",
-				 &ValorDado, &ValorEsperado, &CondRetEsperada);
-			 if (NumLidos != 3)
-			 {
-				 return TST_CondRetParm;
-			 }
+	/* Testar ler pontuacao */
 
-			 CondRetObtido = DP_lerPontos(ValorDado, &ValorObtido);
+	else if (strcmp(ComandoTeste, LER_PONTOS) == 0)
+	{
+		NumLidos = LER_LerParametros("cii",
+			&jogador, &ValorEsperado, &CondRetEsperada);
+		if (NumLidos != 3)
+		{
+			return TST_CondRetParm;
+		}
 
-			 Ret = TST_CompararInt(CondRetEsperada, CondRetObtido,
-				 "Retorno errado ao ler pontos.");
+		CondRetObtido = DP_lerPontos(jogador, &ValorObtido);
 
-			 if (Ret != TST_CondRetOK)
-			 {
-				 return Ret;
-			 }
+		Ret = TST_CompararInt(CondRetEsperada, CondRetObtido,
+			"Retorno errado ao ler pontos.");
 
-			 return TST_CompararInt(ValorEsperado, ValorObtido,
-				 "Valor retornado por ler pontos esta errado.");
+		if (Ret != TST_CondRetOK)
+		{
+			return Ret;
+		}
 
-         }
+		return TST_CompararInt(ValorEsperado, ValorObtido,
+			"Valor retornado por ler pontos esta errado.");
 
-      /* Testar DP ler valor do dados pontos */
+	}
 
-         else if ( strcmp( ComandoTeste , LER_VALOR_DP) == 0 )
-         {
+	/* Testar DP ler valor do dados pontos */
 
-			 NumLidos = LER_LerParametros("ii",
-				 &ValorEsperado, &CondRetEsperada);
-			 if (NumLidos != 2)
-			 {
-				 return TST_CondRetParm;
-			 }
+	else if (strcmp(ComandoTeste, LER_VALOR_DP) == 0)
+	{
 
-			 CondRetObtido = DP_lerValorDadosPontos(&ValorObtido);
+		NumLidos = LER_LerParametros("ii",
+			&ValorEsperado, &CondRetEsperada);
+		if (NumLidos != 2)
+		{
+			return TST_CondRetParm;
+		}
 
-			 Ret = TST_CompararInt(CondRetEsperada, CondRetObtido,
-				 "Retorno errado ao ler valor do dados pontos.");
+		CondRetObtido = DP_lerValorDadosPontos(&ValorObtido);
 
-			 if (Ret != TST_CondRetOK)
-			 {
-				 return Ret;
-			 }
+		Ret = TST_CompararInt(CondRetEsperada, CondRetObtido,
+			"Retorno errado ao ler valor do dados pontos.");
 
-			 return TST_CompararInt(ValorEsperado, ValorObtido,
-				 "Valor do dados pontos esta errado.");
+		if (Ret != TST_CondRetOK)
+		{
+			return Ret;
+		}
 
-         }
+		return TST_CompararInt(ValorEsperado, ValorObtido,
+			"Valor do dados pontos esta errado.");
 
-         else if ( strcmp( ComandoTeste , LER_ULTIMO_JOGADOR) == 0 )
-         {
+	}
 
-			 NumLidos = LER_LerParametros("ii",
-				 &ValorEsperado, &CondRetEsperada);
-			 if (NumLidos != 2)
-			 {
-				 return TST_CondRetParm;
-			 }
+	else if (strcmp(ComandoTeste, LER_ULTIMO_JOGADOR) == 0)
+	{
 
-			 CondRetObtido = DP_lerUltimoJogador(&ValorObtido);
+		NumLidos = LER_LerParametros("ci",
+			&jogador, &CondRetEsperada);
+		if (NumLidos != 2)
+		{
+			return TST_CondRetParm;
+		}
 
-			 Ret = TST_CompararInt(CondRetEsperada, CondRetObtido,
-				 "Retorno errado ao ler ultimo jogador a dobrar.");
+		CondRetObtido = DP_lerUltimoJogador(&jogador);
 
-			 if (Ret != TST_CondRetOK)
-			 {
-				 return Ret;
-			 }
+		Ret = TST_CompararInt(CondRetEsperada, CondRetObtido,
+			"Retorno errado ao ler ultimo jogador a dobrar.");
 
-			 return TST_CompararInt(ValorEsperado, ValorObtido,
-				 "Ultimo jogador esta errado.");
+		if (Ret != TST_CondRetOK)
+		{
+			return Ret;
+		}
 
-         }
+		return TST_CompararInt(ValorEsperado, ValorObtido,
+			"Ultimo jogador esta errado.");
 
-         else if ( strcmp( ComandoTeste , DESTROI_DP ) == 0 )
-         {
-            NumLidos = LER_LerParametros( "i" ,
-                               &CondRetEsperada ) ;
-            if ( NumLidos != 1 )
-            {
-               return TST_CondRetParm ;
-            }
+	}
 
-            CondRetObtido = DP_destroiDadosPontos( ) ;
+	else if (strcmp(ComandoTeste, DESTROI_DP) == 0)
+	{
+		NumLidos = LER_LerParametros("i",
+			&CondRetEsperada);
+		if (NumLidos != 1)
+		{
+			return TST_CondRetParm;
+		}
 
-            return TST_CompararInt( CondRetEsperada , CondRetObtido ,
-                                    "Retorno errado ao criar DadosPontos." );
+		CondRetObtido = DP_destroiDadosPontos();
 
-         } 
+		return TST_CompararInt(CondRetEsperada, CondRetObtido,
+			"Retorno errado ao criar DadosPontos.");
 
-      return TST_CondRetNaoConhec ;
+	}
 
-   }
+	return TST_CondRetNaoConhec;
+
+}
 

@@ -69,7 +69,7 @@ DP_tpCondRet DP_criaDadosPontos(void);
 
 /***********************************************************************
 *
-*  $FC Função: DP Dobrar 
+*  $FC Função: DP Dobrar
 *
 *  $ED Descrição da função
 *     Dobra o valor da partida e troca o ultimo jogador para o jogador que pediu a dobra
@@ -89,7 +89,7 @@ DP_tpCondRet DP_dobraValor(char jogador);
 
 /***********************************************************************
 *
-*  $FC Função: DP Modifica pontos 
+*  $FC Função: DP Modifica pontos
 *
 *  $ED Descrição da função
 *     Incrementa a pontuacao de um dado jogador
