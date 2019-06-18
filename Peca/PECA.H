@@ -55,6 +55,12 @@ typedef struct peca Peca;
 *  $ED Descrição da função
 *     Cria uma nova peça com a cor recebida.
 *
+*  Assertivas de entrada e saida:
+*  Entrada: p tem de ser NULL
+*           cor não pode ser diferente de 'b' ou 'p'
+*         
+*  Saida:   
+*
 *  $FV Valor retornado
 *     PEC_CondRetOK
 *     PEC_CondRetFaltouMemoria
